@@ -1,0 +1,62 @@
+#minirefresh{
+	top: 80px;
+	bottom: 96px;
+}
+.list-content{
+	padding-bottom: 96px;
+	margin-top: 80px;
+}
+.listContent_ul{
+	overflow: hidden;
+	padding-left:0;
+	margin: 0;
+	border-top: 1px solid rgb(225, 225, 225);
+}
+.list{
+	float: left;
+	width: 50%;
+	box-sizing: border-box;
+	/*height: 248px;*/
+	overflow: hidden;
+	padding: 20px 20px 20px 20px;
+	border-right: 1px solid rgb(225, 225, 225);
+	border-bottom: 1px solid rgb(225, 225, 225);
+}
+.list-text{
+	color: #333;
+	font-size: 22px;
+	text-align: left;
+	margin-top: 5px;
+	color: #999;
+}
+.list-chineseName{
+	font-size: 36px;
+	color: #000;
+}
+.list img{
+	display: block;
+	height: auto;
+	width: 100%;
+	height: 250px;
+}
+.no-more{
+	width: 100%;
+	height: 80px;
+	color: rgb(125, 125, 125);
+	line-height: 80px;
+	text-align: center;
+	position: relative;
+	font-size: 20px;
+}
+.no-more::after{
+	content: '';
+	position: absolute;
+	background: url(../img/no-more.png) no-repeat;
+	background-size: 100% 100%;
+	width: 308px;
+	height: 6px;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+}

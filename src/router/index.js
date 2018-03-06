@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import HelloWorld from '@/components/index'
 import list from '@/components/list'
 import details from '@/components/details'
 import photo from '@/components/photo'
@@ -9,6 +9,7 @@ import SaleDetails from '@/components/SaleDetails'
 import persion from '@/components/persion'
 import shoppingCarts from '@/components/persional/shoppingCarts'
 import persionSettings from '@/components/persional/persionSettings'
+import search from '@/components/search'
 require("./../api")
 require("./../plugins/jquery")
 import MiniRefreshTools from 'minirefresh';
@@ -77,6 +78,11 @@ var routes = [
 	path: '/persionSettings',
 	name: 'persionSettings',
 	component: persionSettings
+},
+{
+	path: '/search',
+	name: 'search',
+	component: search
 }
 ]
 export default new Router({

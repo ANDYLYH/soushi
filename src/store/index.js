@@ -10,6 +10,9 @@ export default new Vuex.Store({
 		home:true,
 		listTop:0,
 		cashTop:0,
+		list_kindNum:0,
+		list_colorNum:0,
+		list_countryNum:0
 	},
 	mutations:{
 		change:function(state){
@@ -25,6 +28,9 @@ export default new Vuex.Store({
 		textShow:state => state.textShow,
 		home:state => state.home,
 		listTop:state => state.listTop,
-		cashTop:state => state.cashTop
+		cashTop:state => state.cashTop,
+		list_kindNum:state => state.list_kindNum,
+		list_colorNum:state => state.list_colorNum,
+		list_countryNum:state => state.list_countryNum
 	}
 })
