@@ -30,5 +30,6 @@ export default {
 }
 </script>
 <style>
+/*样式重置  公共样式*/
   @import './css/reset.css';
 </style>
