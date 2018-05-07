@@ -1,19 +1,18 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import list from '@/components/list'
-import details from '@/components/details'
-import photo from '@/components/photo'
-import cashSale from '@/components/cashSale'
-import SaleDetails from '@/components/SaleDetails'
-import persion from '@/components/persion'
+import index from '@/components/home/index'
+import map from '@/components/map/index'
+import details from '@/components/map/detail'
+import photo from '@/components/photo/index'
+import cashSale from '@/components/cashSale/index'
+import SaleDetails from '@/components/cashSale/detail'
+import persion from '@/components/persional/index'
 import shoppingCarts from '@/components/persional/shoppingCarts'
 import persionSettings from '@/components/persional/persionSettings'
-require("./../api")
+import search from '@/components/map/search'
 require("./../plugins/jquery")
 import MiniRefreshTools from 'minirefresh';
 import 'minirefresh/dist/debug/minirefresh.css'
-
 // import elementUi from 'element-ui'
 // import 'element-ui/lib/theme-chalk/index.css';
 // Vue.use(elementUi)
@@ -27,17 +26,26 @@ Vue.use(Router)
 var routes = [
 {
 	path: '/',
-	name: 'HelloWorld',
-	component: HelloWorld
+	name: 'index',
+	component: index
 },
 {
-	path: '/list',
-	name: 'list',
-	component: list,
+	path: '/map',
+	name: 'map',
+	component: map,
 	meta: {
 		title: '列表页',
 		keepAlive: true
-	}
+	},
+    // beforeEnter (to, from, next) {
+    //     // let token = Vue.cookie.get('token')
+    //     // if (!token || !/\S/.test(token)) {
+    //     //   next({ name: 'login' })
+    //     // }
+    //     console.log('测试',to,from,next);
+    //     next({ name: 'HelloWorld' })
+    //     next()
+    //   }
 },
 {
 	path: '/details/:id',
@@ -77,6 +85,11 @@ var routes = [
 	path: '/persionSettings',
 	name: 'persionSettings',
 	component: persionSettings
+},
+{
+	path: '/search',
+	name: 'search',
+	component: search
 }
 ]
 export default new Router({

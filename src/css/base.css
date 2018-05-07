@@ -1,0 +1,76 @@
+/*content start*/
+.result-list{
+    overflow: hidden;
+    position: relative;
+    border-left: 1px solid rgb(225, 225, 225);
+}
+
+.result-list .result-item{
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+    padding: 20px 20px 0 20px;
+    border-right: 1px solid rgb(225, 225, 225);
+    border-bottom: 1px solid rgb(225, 225, 225);
+}
+
+.result-list .panel .promotion{
+    background: rgb(255, 72, 94);
+    font-size: 26px;
+    padding: 3px 14px;
+    color: #fff;
+    line-height: 30px;
+    position: absolute;
+    left: 0;
+    top: 20px;
+}
+
+.result-list .panel{
+    position: relative;
+}
+
+.result-list .panel .info {
+    padding-top: 20px;
+}
+
+.result-list .panel .info .tips{
+    width: 50px;
+    height: 30px;
+    border-radius: 2px;
+    color: #fff;
+    text-align: center;
+    line-height: 30px;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.result-list .panel .info .tips.promotion-tips{
+    background: rgb(144, 19, 254);
+    color: #fff;
+}
+
+.result-list .panel .info .tips.new-tips{
+    background: rgb(17, 191, 255);
+}
+
+.result-list .panel .info .tips.jp-tips{
+    background: rgb(223, 164, 74);
+}
+
+.result-list .panel .p-name{
+    font-size: 30px;
+    line-height: 30px;
+    color: #333;
+    padding-bottom: 25px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.result-list .panel .p-format{
+    font-size: 20px;
+    line-height: 20px;
+    color: rgb(125, 125, 125);
+    padding-bottom: 25px;
+}
