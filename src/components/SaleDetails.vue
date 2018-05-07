@@ -122,5 +122,139 @@ export default {
 }
 </script>
 <style scoped>
-	@import '../css/SaleDetails.css'
+*{
+	margin: 0;padding: 0;
+}
+.saleDetails{
+	width: 100%;padding-top: 80px;
+}
+.swiper-img{
+	width: 100%;
+	height: 564px;
+}
+.swiper-container_1{
+	height: 564px;
+}
+/*msg*/
+.DetailsMsg{
+	width: 750px;overflow: hidden;padding: 12px 24px;
+}
+.text_name{
+	width: 100%;overflow: hidden;padding: 15px 0;
+}
+.text_name_1{
+	float: left;font-size: 36px;
+	line-height: 36px;
+	color: #000;
+}
+.text_name_2{
+	float: right;font-size: 24px;display: block;
+}
+.DetailsMsg_p{
+	font-size: 28px;
+	padding: 15px 0;
+	line-height: 28px;
+	color: rgb(125, 125, 125);
+}
+.split_line{
+	background: #f8f8f8;
+	height: 20px;
+	width: 100%;
+}
+.details_nav{
+	height: 80px;
+	width: 100%;
+}
+.details_nav .details_navSpan{
+	font-size: 28px;
+	display: inline-block;
+	width: 25%;
+	float: left;
+	height: 80px;
+	line-height: 80px;
+	text-align: center;
+	border-right: 1px solid rgb(225, 225, 225);
+	box-sizing: border-box;
+	background: #fff;
+}
+.details_nav .active{
+	color: rgb(87, 120, 249);
+}
+
+/*detail-list start*/
+.detail-list {
+    position: fixed;
+    width: 100%;
+    box-sizing: border-box;
+    background: #fff;
+    bottom: 0px;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, .1),0px -1px 5px rgba(0, 0, 0, .1);
+    -webkit-box-shadow: 0px 1px 5px rgba(0, 0, 0, .1),0px -1px 5px rgba(0, 0, 0, .1);
+    -moz-box-shadow: 0px 1px 5px rgba(0, 0, 0, .1),0px -1px 5px rgba(0, 0, 0, .1);
+    height: 96px;
+    display: flex;
+    display: -webkit-flex;
+    z-index: 1;
+}
+
+.detail-list .detail-item{
+    flex: 1;
+    -webkit-flex: 1;
+    display: flex;
+    display: -webkit-flex;
+    border-right: 1px solid #f2f2f2;
+    align-items: center;
+    -webkit-align-items: center;
+}
+
+.detail-list .detail-item:last-child{
+    border-left: 0px;
+}
+
+.detail-list .detail-item .contact-button,
+.detail-list .detail-item .buy-button,
+.detail-list .detail-item .collection-button{
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    align-items: center;
+    -webkit-align-items: center;
+    width: 100%;
+}
+
+.detail-list .detail-item .contact-button .icon-contact{
+    display: inline-block;
+    width: 30px;
+    height: 28px;
+    background: url(../img/detail/contact.png) no-repeat;
+    background-size: 100%;
+}
+
+.detail-list .detail-item .icon-buy{
+    display: inline-block;
+    width: 26px;
+    height: 30px;
+    background: url(../img/detail/buy.png) no-repeat;
+    background-size: 100%;
+}
+
+.detail-list .collection-button .icon{
+    width: 30px;
+    height: 27px;
+    display: inline-block;
+    background: url("../img/detail/uncollect.png") no-repeat;
+    background-size: 100%;
+}
+
+.detail-list .collection-button.active .icon{
+     background: url("../img/detail/collect.png") no-repeat;
+     background-size: 100%;
+}
+
+.detail-list .text{
+    margin-left: 10px;
+    font-size: 28px;
+    margin-bottom: 3px;
+}
 </style>

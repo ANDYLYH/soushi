@@ -1,5 +1,12 @@
 <template>
   <div id="app">
+    <!--<el-tabs v-model="activeName" @tab-click="handleClick">
+      <el-tab-pane label="用户管理" name="first" value = "用户管理"></el-tab-pane>
+      <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
+      <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
+      <el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
+    </el-tabs>-->
+    <!--<keep-alive><router-view/></keep-alive>-->
     <keep-alive>
         <router-view v-if="$route.meta.keepAlive"></router-view>
     </keep-alive>
@@ -30,6 +37,194 @@ export default {
 }
 </script>
 <style>
-/*样式重置  公共样式*/
-  @import './css/reset.css';
+/*@import './reset.css!css-loader'*/
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+}
+/*@charset "utf-8";*/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video ,button{
+    margin:0;
+    padding:0;
+    outline:0; 
+}
+button,iframe{
+   border: 0;
+}
+html,body{
+  font-size: 62.5%;
+    font-family: "微软雅黑";
+}
+h1,h2,h3,h4,h5,h6,em,i {
+    font-weight: 100;
+    font-style: normal
+}
+ul,ol,li {
+    list-style-type: none
+}
+a {
+    color: #666;
+    text-decoration: none;
+    outline: 0
+}
+a:hover {
+    text-decoration: none
+}　
+img{
+  display: block;
+}
+input[type=number]::-webkit-input-placeholder { 
+      color: #DDDDDD; 
+      -webkit-transition: color.5s; 
+    } 
+    input[type=number]:focus::-webkit-input-placeholder, input[type=number]:hover::-webkit-input-placeholder { 
+      -webkit-transition: opacity.5s; 
+      opacity: 0;
+    }
+input::-webkit-input-placeholder{
+  color: #DBDBDB;
+}   
+textarea::-webkit-input-placeholder{
+  color: #DBDBDB;
+} 
+  /*头部*/
+  .header-content{
+    height: 80px;
+    width: 100%;
+    background-color: #3399ff;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+  }
+   .header-content .header-text{
+     display: block;
+     height: 100%;
+     font-size:28px;
+     color: #fff;
+     line-height: 80px;
+     text-align: center;
+   }
+
+.header-back{
+  position: absolute;
+  height: 80px;
+  width: 80px;
+  left: 0;
+  background: url(./img/back.png) no-repeat center center;
+  background-size: 40px;
+}
+/*footer nav*/
+.nav-list{
+    position: fixed;
+    bottom: 0;
+    height: 96px;
+    width: 100%;
+    background: #fff;
+    z-index: 1;
+    display:flex;
+    display: -webkit-flex;
+    box-sizing: border-box;
+    box-shadow: 0px -5px 10px rgba(125, 125, 125, .1);
+    -webkit-box-shadow: 0px -5px 10px rgba(125, 125, 125, .1);
+}
+.nav-list .nav-item{
+    flex: 1;
+    -webkit-flex: 1;
+    text-align: center;
+    padding-top: 8px;
+}
+
+.nav-list .nav-item a{
+    height: 100%;
+}
+
+.nav-list .nav-item .icon{
+    display: block;
+    margin: 0 auto;
+}
+
+.nav-list .home-nav .icon{
+    background: url(./img/home.png) no-repeat center center;
+    width: 48px;
+    height: 49px;
+}
+
+.nav-list .home-nav.active .icon{
+    background: url(./img/home-active.png) no-repeat;
+    width: 48px;
+    height: 49px;
+}
+.nav-list .jp-nav .icon{
+    background: url(./img/jp.png) no-repeat;
+    width: 51px;
+    height: 49px;
+}
+
+.nav-list .jp-nav.active .icon{
+    background: url(./img/jp-active.png) no-repeat;
+    width: 51px;
+    height: 49px;
+}
+
+.nav-list .photo-nav .icon{
+    background: url(./img/photo.png) no-repeat;
+    width: 58px;
+    height: 49px;
+}
+
+.nav-list .photo-nav.active .icon{
+    background: url(./img/photo-active.png) no-repeat;
+    width: 58px;
+    height: 49px;
+}
+
+.nav-list .sxh-nav .icon{
+    background: url(./img/xh.png) no-repeat;
+    width: 48px;
+    height: 49px;
+}
+
+.nav-list .sxh-nav.active .icon{
+    background: url(./img/xh-active.png) no-repeat;
+    width: 48px;
+    height: 49px;
+    background-size: 100% 100%;
+}
+
+.nav-list .personal-nav .icon{
+    background: url(./img/personal.png) no-repeat;
+    width: 48px;
+    height: 49px;
+}
+
+.nav-list .personal-nav.active .icon{
+    background: url(./img/personal-active.png) no-repeat;
+    width: 48px;
+    height: 49px;
+}
+
+.nav-list .nav-item .text{
+    color: rgb(25, 25, 25);
+    font-size: 20px;
+    margin-top: 9px;
+    display: block;
+    text-align: center;
+}
+
+.nav-list .nav-item.active .text{
+    color: rgb(0, 44, 215);
+}
 </style>
