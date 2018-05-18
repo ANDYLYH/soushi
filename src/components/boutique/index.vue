@@ -54,7 +54,7 @@ export default {
 			list:[],
 			pageCurrent:1,
 			pageTotal:0,
-			title:'搜现货',
+			title:'精品现货',
 			minirefresh: null,
 		}
 	},
@@ -65,12 +65,13 @@ export default {
 		
 	},
 	activated(){
-		document.title = "搜现货";
+		document.title = "精品现货";
 		if(this.$store.state.cashTop > 0){
 			$('#minirefresh').scrollTop(this.$store.state.cashTop)
 		}
 	},
 	mounted () {
+		document.title = "精品现货";
 		var self = this;
 		self.miniRefresh = new MiniRefresh({
 			container: '#minirefresh',
@@ -91,7 +92,7 @@ export default {
 			// API.onsale.search({
 			// 		"pageCurrent": $self.pageCurrent,
 			// 		"pageSize": 16,
-			// 		"quality": 0
+			// 		"quality": 2
 			// 	}).then((res) => {
 			//         $self.pageTotal = res.data.page.totalPage;
 			// 		$self.pageCurrent = res.data.page.pageCurrent;
@@ -107,7 +108,7 @@ export default {
 			getDataFn(config.slabQuery,{
 		        "pageCurrent": $self.pageCurrent,
 				"pageSize": 16,
-				"quality": 0
+				"quality": 2
 		      },function(res){
 		        $self.pageTotal = res.page.totalPage;
 				$self.pageCurrent = res.page.pageCurrent;
@@ -130,7 +131,7 @@ export default {
 			// API.onsale.search({
 			// 		"pageCurrent": $self.pageCurrent,
 			// 		"pageSize": 16,
-			// 		"quality": 0
+			// 		"quality": 2
 			// 	}).then((res) => {
 			//         $self.pageTotal = res.data.page.totalPage;
 			// 		$self.pageCurrent = res.data.page.pageCurrent;
@@ -145,7 +146,7 @@ export default {
 			getDataFn(config.slabQuery,{
 		        "pageCurrent": $self.pageCurrent,
 				"pageSize": 16,
-				"quality": 0
+				"quality": 2
 		    },function(res){
 		        $self.pageTotal = res.page.totalPage;
 				$self.pageCurrent = res.page.pageCurrent;

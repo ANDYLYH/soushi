@@ -5,11 +5,13 @@ import map from '@/components/map/index'
 import details from '@/components/map/detail'
 import photo from '@/components/photo/index'
 import cashSale from '@/components/cashSale/index'
+import boutique from '@/components/boutique/index'
 import SaleDetails from '@/components/cashSale/detail'
 import persion from '@/components/persional/index'
 import shoppingCarts from '@/components/persional/shoppingCarts'
 import persionSettings from '@/components/persional/persionSettings'
 import search from '@/components/map/search'
+import wall from '@/components/wall/index'
 require("./../plugins/jquery")
 import MiniRefreshTools from 'minirefresh';
 import 'minirefresh/dist/debug/minirefresh.css'
@@ -63,6 +65,24 @@ var routes = [
 	component: cashSale,
 	meta: {
 		title: '现货',
+		keepAlive: true
+	}
+},
+{
+	path: '/boutique',
+	name: 'boutique',
+	component: boutique,
+	meta: {
+		title: '精品',
+		keepAlive: true
+	}
+},
+{
+	path: '/wall',
+	name: 'wall',
+	component: wall,
+	meta: {
+		title: '背景墙',
 		keepAlive: true
 	}
 },

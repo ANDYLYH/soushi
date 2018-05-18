@@ -99,6 +99,10 @@
     background:url("../img/index/supplier.png") no-repeat;
     background-size:100% 100%;
 }
+.swiper-container2 .wall-link .icon{ 
+    background:url("../img/index/wall.png") no-repeat;
+    background-size:100% 100%;
+}
 
 .swiper-container2 .ybsc-link .icon{
     background:url("../img/index/icon_Send.png") no-repeat;

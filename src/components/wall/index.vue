@@ -54,7 +54,6 @@ export default {
 			list:[],
 			pageCurrent:1,
 			pageTotal:0,
-			title:'搜现货',
 			minirefresh: null,
 		}
 	},
@@ -65,12 +64,13 @@ export default {
 		
 	},
 	activated(){
-		document.title = "搜现货";
+		document.title = "背景图";
 		if(this.$store.state.cashTop > 0){
 			$('#minirefresh').scrollTop(this.$store.state.cashTop)
 		}
 	},
 	mounted () {
+		document.title = "背景图";
 		var self = this;
 		self.miniRefresh = new MiniRefresh({
 			container: '#minirefresh',
@@ -104,10 +104,10 @@ export default {
 			// 	  		$self.pageCurrent += 1;
 			// 	  	}	
 	  //       });
-			getDataFn(config.slabQuery,{
+			getDataFn(config.queryWallPanel,{
 		        "pageCurrent": $self.pageCurrent,
-				"pageSize": 16,
-				"quality": 0
+				"pageSize": 8,
+				"quality": 2
 		      },function(res){
 		        $self.pageTotal = res.page.totalPage;
 				$self.pageCurrent = res.page.pageCurrent;
@@ -142,10 +142,10 @@ export default {
 			// 	  		$self.pageCurrent += 1;
 			// 	  	}
 	  //       });
-			getDataFn(config.slabQuery,{
+			getDataFn(config.queryWallPanel,{
 		        "pageCurrent": $self.pageCurrent,
-				"pageSize": 16,
-				"quality": 0
+				"pageSize": 8,
+				"quality": 2
 		    },function(res){
 		        $self.pageTotal = res.page.totalPage;
 				$self.pageCurrent = res.page.pageCurrent;

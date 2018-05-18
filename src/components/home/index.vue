@@ -27,9 +27,17 @@
     </div>
    	<div class="swiper-container swiper-container2" id="JSwiperContainer2">
         <div class="swiper-wrapper link-list">
+            <div class="swiper-slide link-item wall-link">
+                <a href="javascript:void(0);">
+                  <router-link :to="{name: 'wall'}">
+                    <i class="icon supplier-icon"></i>
+                    <span class="text">背景墙</span>
+                  </router-link>
+                </a>
+            </div>
             <div class="swiper-slide link-item jpsc-link">
                 <a href="javascript:void(0);">
-                  <router-link :to="{name: 'cashSale'}">
+                  <router-link :to="{name: 'boutique'}">
                     <i class="icon jpsc-icon"></i>
                     <span class="text">精品商城</span>
                   </router-link>
@@ -51,14 +59,7 @@
                   </router-link>
                 </a>
             </div>
-            <div class="swiper-slide link-item supplier-link">
-                <a href="javascript:void(0);">
-                  <router-link :to="{name: 'supplier'}">
-                    <i class="icon supplier-icon"></i>
-                    <span class="text">供应商</span>
-                  </router-link>
-                </a>
-            </div>
+           
             <div class="swiper-slide link-item ybsc-link">
                 <a href="javascript:void(0);">
                   <router-link :to="{name: 'supplier'}">
@@ -77,7 +78,7 @@
         </div>
     </div>
 
-    <div id="minirefresh" class="minirefresh-wrap" @scroll="paperScroll()" style="top: 688px;">
+    <div id="minirefresh" class="minirefresh-wrap"  style="top: 688px;">
       <div class="minirefresh-scroll">
         <ul class="listContent_ul">
           <li v-for="item in list" class="list">
@@ -100,13 +101,13 @@
 <script>
 import {mapGetters,mapMutations} from 'vuex'
 import foot from '@/components/common/footer'
-import API from "./../../api"
+// import API from "./../../api"
+import config from "./../../api/api"
+import getDataFn from "./../../api/utilAjax"
 // import "../reset.css!css-loader"
 export default {
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
-      percentageNum:0,
       dialog: false,
       list:[],
       pageCurrent:1,
@@ -121,22 +122,10 @@ export default {
     document.title = "首页";
   },
   created(){
-  	this.$store.state.home = true;
-  	// console.log(api.searchTemplateCountList);
-    var self = this;
-    const timer = setInterval(function(){
-      if(self.percentageNum < 100){
-        self.percentageNum ++;
-      }else{
-        clearInterval(timer);
-      }
-    },500)
+    // location.reload();
      
   },
   methods:{
-  	...mapMutations([
-  		'change'
-  	]),
     _initSwiper() {
       var mySwiper = new Swiper('.swiper-container1', {
         pagination: ".swiper-pagination",
@@ -149,52 +138,85 @@ export default {
       })
     },
     downCallback(){
+      console.log(2)
       const $self = this;
       this.pageCurrent = 1;
-      API.onsale.search({
+      // API.onsale.search({
+      //     "pageCurrent": $self.pageCurrent,
+      //     "pageSize": 16
+      //   }).then((res) => {
+      //         $self.pageTotal = res.data.page.totalPage;
+      //     $self.pageCurrent = res.data.page.pageCurrent;
+      //     $self.list = [];
+      //     for(let i = 0; i < res.data.data.list.length ;i++ ){
+      //       $self.list.push(res.data.data.list[i]);
+      //     }
+      //     $self.miniRefresh.endDownLoading(true);
+      //     if($self.pageTotal != $self.pageCurrent){
+      //         $self.pageCurrent += 1;
+      //       } 
+      //     });
+      getDataFn(config.slabQuery,{
           "pageCurrent": $self.pageCurrent,
-          "pageSize": 16
-        }).then((res) => {
-              $self.pageTotal = res.data.page.totalPage;
-          $self.pageCurrent = res.data.page.pageCurrent;
+          "pageSize": 8
+      },function(res){
+          $self.pageTotal = res.page.totalPage;
+          $self.pageCurrent = res.page.pageCurrent;
           $self.list = [];
-          for(let i = 0; i < res.data.data.list.length ;i++ ){
-            $self.list.push(res.data.data.list[i]);
+          for(let i = 0; i < res.data.list.length ;i++ ){
+            $self.list.push(res.data.list[i]);
           }
           $self.miniRefresh.endDownLoading(true);
           if($self.pageTotal != $self.pageCurrent){
-              $self.pageCurrent += 1;
-            } 
-          });
+            $self.pageCurrent += 1;
+          } 
+      })
     },
     upCallback(){
+      console.log(1)
       const $self = this;
+      console.log($self.pageTotal,$self.pageCurrent)
       if($self.pageTotal == $self.pageCurrent){
         $self.miniRefresh.endUpLoading(true);
         return false;
       }
-      API.onsale.search({
+      // API.onsale.search({
+      //     "pageCurrent": $self.pageCurrent,
+      //     "pageSize": 16
+      //   }).then((res) => {
+      //         $self.pageTotal = res.data.page.totalPage;
+      //     $self.pageCurrent = res.data.page.pageCurrent;
+      //     for(let i = 0; i < res.data.data.list.length ;i++ ){
+      //       $self.list.push(res.data.data.list[i]);
+      //     }
+      //     $self.miniRefresh.endUpLoading($self.pageTotal == $self.pageCurrent ? true : false);
+      //     if($self.pageTotal != $self.pageCurrent){
+      //         $self.pageCurrent += 1;
+      //       }
+      //     });
+      getDataFn(config.slabQuery,{
           "pageCurrent": $self.pageCurrent,
-          "pageSize": 16
-        }).then((res) => {
-              $self.pageTotal = res.data.page.totalPage;
-          $self.pageCurrent = res.data.page.pageCurrent;
-          for(let i = 0; i < res.data.data.list.length ;i++ ){
-            $self.list.push(res.data.data.list[i]);
+          "pageSize": 8
+      },function(res){
+          $self.pageTotal = res.page.totalPage;
+          $self.pageCurrent = res.page.pageCurrent;
+          for(let i = 0; i < res.data.list.length ;i++ ){
+            $self.list.push(res.data.list[i]);
           }
           $self.miniRefresh.endUpLoading($self.pageTotal == $self.pageCurrent ? true : false);
           if($self.pageTotal != $self.pageCurrent){
               $self.pageCurrent += 1;
             }
-          });
+      })
     },
     paperScroll(){
-      this.$store.state.cashTop = $('#minirefresh').scrollTop();
+      // this.$store.state.cashTop = $('#minirefresh').scrollTop();
     }
   },
-  mounted(){
+  mounted () {
     this._initSwiper();
     var self = this;
+    
     self.miniRefresh = new MiniRefresh({
       container: '#minirefresh',
       down: {
@@ -208,11 +230,6 @@ export default {
     });
   },
   computed:{
-	...mapGetters([
-		'name',
-		"textShow",
-		"home"
-	])
   }
 }
 </script>

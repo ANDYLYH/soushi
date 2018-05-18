@@ -7,10 +7,10 @@
 					<span class="text">首页</span>
 				</router-link>
 			</div>
-			<div :class="name == 'map' ? 'active' : ''" class="nav-item jp-nav ">
-				<router-link :to="{name: 'map'}">
+			<div :class="name == 'boutique' ? 'active' : ''" class="nav-item jp-nav ">
+				<router-link :to="{name: 'boutique'}">
 					<i class="icon"></i>
-					<span class="text">图库</span>
+					<span class="text">精品</span>
 				</router-link>
 			</div>
 			<div :class="name == 'photo' ? 'active' : ''" class="nav-item photo-nav">

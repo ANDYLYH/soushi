@@ -65,7 +65,7 @@ textarea::-webkit-input-placeholder{
   .header-content{
     height: 80px;
     width: 100%;
-    background-color: #3399ff;
+    background-color: #060606;
     position: fixed;
     top: 0;
     z-index: 100;
@@ -197,3 +197,12 @@ textarea::-webkit-input-placeholder{
 .nav-list .nav-item.active .text{
     color: rgb(0, 44, 215);
 }
+.test{
+  font-size: 0.3rem;
+  margin: 0.05rem;
+  padding: 0.16rem;
+  height: 0.386667rem;
+  width: 10.0rem;
+  width: 10.0rem;
+}
+

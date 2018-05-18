@@ -7,6 +7,8 @@ const service = axios.create({
   timeout: 1000 * 30,
   withCredentials: true,//跨域
   dataType: 'json',
+  // dataType:'jsonp',
+  // jsonp:'callback',
   headers: {
     'Content-Type': 'application/json; charset=utf-8'
   }

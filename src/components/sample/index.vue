@@ -66,15 +66,13 @@
 			</div>
 		</div>
 		<!-- 底部 -->
-		<ft :name="$router.currentRoute.name"></ft>
+		<!-- <ft :name="$router.currentRoute.name"></ft> -->
 	</div>
 </template>
 <script>
 import {mapGetters,mapMutations} from 'vuex'
 import foot from '@/components/common/footer'
-// import API from "./../../api"
-import config from "./../../api/api"
-import getDataFn from "./../../api/utilAjax"
+import API from "./../../api"
 export default {
 	data(){
 		return {
@@ -82,7 +80,7 @@ export default {
 			list:[],
 			pageCurrent:1,
 			pageTotal:0,
-			title:'图库',
+			title:'样板商城',
 			minirefresh: null,
 			show:false,
 			indexNum:null,
@@ -93,10 +91,10 @@ export default {
 		}
 	},
 	components:{
-		"ft":foot
-	},
+     'ft':foot
+    },	
 	activated(){
-		document.title = '图库';
+		document.title = '样板商城';
 		if(this.listTop > 0){
 			$('#minirefresh').scrollTop(this.listTop)
 		}
@@ -105,7 +103,7 @@ export default {
 	created(){
 	},
 	mounted () {
-		document.title = '图库';
+	
 		var self = this;
 		self.miniRefresh = new MiniRefresh({
 			container: '#minirefresh',
@@ -117,7 +115,7 @@ export default {
 				isAuto: true,
 				callback: self.upCallback
 			}
-		});	
+		});
 	},
 	methods: {
 		downCallback(){
@@ -126,110 +124,39 @@ export default {
 			$self.list = [];
 			$self.miniRefresh.endDownLoading(false);
 			// 请求数据
-			// API.map.search({
-			// 		"pageCurrent": $self.pageCurrent,
-			// 		"pageSize": 16,
-			// 		'kind':$self.$store.state.list_kindNum,
-			// 		'color':$self.$store.state.list_colorNum,
-			// 		'country':$self.$store.state.list_countryNum,
-			// 		'keyword':$self.$store.state.list_keyword,
-			// 		searchImgUrl:'',
-			// 		prevId:''
-			// 	}).then((res) => {
-		 //          	$self.pageTotal = res.data.page.totalPage;
-			// 		$self.pageCurrent = res.data.page.pageCurrent;
-			// 		// 锁定
-			// 		if(res.data.data.list.length == 0){
-			// 			$self.emptyFlag = true;
-			// 			$self.miniRefresh.refreshOptions($self.getOptionsByStatus('关闭'));
-			// 		}else{
-			// 			$self.emptyFlag = false;
-			// 			$self.miniRefresh.refreshOptions($self.getOptionsByStatus('启动'));
-			// 		}
-			// 		for(let i = 0; i < res.data.data.list.length;i++ ){
-			// 			$self.list.push(res.data.data.list[i]);
-			// 		}
-			// 		//关闭下拉窗口
-			// 		$self.miniRefresh.endDownLoading(true);
-			// 		if($self.pageTotal != $self.pageCurrent){
-			// 			$self.pageCurrent += 1;
-			// 		}
-	  //       })
-            getDataFn(config.search,{
-				"pageCurrent": $self.pageCurrent,
-				"pageSize": 16,
-				'kind':$self.$store.state.list_kindNum,
-				'color':$self.$store.state.list_colorNum,
-				'country':$self.$store.state.list_countryNum,
-				'keyword':$self.$store.state.list_keyword,
-				searchImgUrl:'',
-				prevId:''
-			},
-			function(res){
-				$self.pageTotal = res.page.totalPage;
-				$self.pageCurrent = res.page.pageCurrent;
-				// 锁定
-				if(res.data.list.length == 0){
-					$self.emptyFlag = true;
-					$self.miniRefresh.refreshOptions($self.getOptionsByStatus('关闭'));
-				}else{
-					$self.emptyFlag = false;
-					$self.miniRefresh.refreshOptions($self.getOptionsByStatus('启动'));
-				}
-				for(let i = 0; i < res.data.list.length;i++ ){
-					$self.list.push(res.data.list[i]);
-				}
-				//关闭下拉窗口
-				$self.miniRefresh.endDownLoading(true);
-				if($self.pageTotal != $self.pageCurrent){
-					$self.pageCurrent += 1;
-				}
-			})	
+			API.sample.search({
+					"pageCurrent": $self.pageCurrent,
+					"pageSize": 16,
+				}).then((res) => {
+		          	$self.pageTotal = res.data.page.totalPage;
+					$self.pageCurrent = res.data.page.pageCurrent;
+					// 锁定
+					if(res.data.data.list.length == 0){
+						$self.emptyFlag = true;
+						$self.miniRefresh.refreshOptions($self.getOptionsByStatus('关闭'));
+					}else{
+						$self.emptyFlag = false;
+						$self.miniRefresh.refreshOptions($self.getOptionsByStatus('启动'));
+					}
+					for(let i = 0; i < res.data.data.list.length;i++ ){
+						$self.list.push(res.data.data.list[i]);
+					}
+					//关闭下拉窗口
+					$self.miniRefresh.endDownLoading(true);
+					if($self.pageTotal != $self.pageCurrent){
+						$self.pageCurrent += 1;
+					}
+	        })
 		},
 		upCallback(){
 			const $self = this;
-			// API.map.search({
-			// 		"pageCurrent": $self.pageCurrent,
-			// 		"pageSize": 16,
-			// 		'kind':$self.$store.state.list_kindNum,
-			// 		'color':$self.$store.state.list_colorNum,
-			// 		'country':$self.$store.state.list_countryNum,
-			// 		'keyword':$self.$store.state.list_keyword,
-			// 		searchImgUrl:'',
-			// 		prevId:''
-			// 	}).then((res) => {
-			// 		$self.pageTotal = res.data.page.totalPage;
-			// 		$self.pageCurrent = res.data.page.pageCurrent;
-			// 		if(res.data.data.list.length == 0){
-			// 			$self.emptyFlag = true;
-			// 			$self.miniRefresh.refreshOptions($self.getOptionsByStatus('关闭'));
-			// 		}else{
-			// 			$self.emptyFlag = false;
-			// 			$self.miniRefresh.refreshOptions($self.getOptionsByStatus('启动'));
-			// 		}
-			// 		// 数据追加
-			// 		for(let i = 0; i < res.data.data.list.length ;i++ ){
-			// 			$self.list.push(res.data.data.list[i]);
-			// 		}
-			// 		$self.miniRefresh.endUpLoading($self.pageTotal == $self.pageCurrent ? true : false);
-			// 		if($self.pageTotal != $self.pageCurrent){
-			// 			$self.pageCurrent += 1;
-			// 		}
-			// 	});
-				getDataFn(config.search,{
+			API.sample.search({
 					"pageCurrent": $self.pageCurrent,
 					"pageSize": 16,
-					'kind':$self.$store.state.list_kindNum,
-					'color':$self.$store.state.list_colorNum,
-					'country':$self.$store.state.list_countryNum,
-					'keyword':$self.$store.state.list_keyword,
-					searchImgUrl:'',
-					prevId:''
-				},
-				function(res){
-					$self.pageTotal = res.page.totalPage;
-					$self.pageCurrent = res.page.pageCurrent;
-					if(res.data.list.length == 0){
+				}).then((res) => {
+					$self.pageTotal = res.data.page.totalPage;
+					$self.pageCurrent = res.data.page.pageCurrent;
+					if(res.data.data.list.length == 0){
 						$self.emptyFlag = true;
 						$self.miniRefresh.refreshOptions($self.getOptionsByStatus('关闭'));
 					}else{
@@ -237,14 +164,14 @@ export default {
 						$self.miniRefresh.refreshOptions($self.getOptionsByStatus('启动'));
 					}
 					// 数据追加
-					for(let i = 0; i < res.data.list.length ;i++ ){
-						$self.list.push(res.data.list[i]);
+					for(let i = 0; i < res.data.data.list.length ;i++ ){
+						$self.list.push(res.data.data.list[i]);
 					}
 					$self.miniRefresh.endUpLoading($self.pageTotal == $self.pageCurrent ? true : false);
 					if($self.pageTotal != $self.pageCurrent){
 						$self.pageCurrent += 1;
 					}
-				})	
+				});
 		},
 		paperScroll(){
 			this.$store.state.listTop = $('#minirefresh').scrollTop();
@@ -268,19 +195,16 @@ export default {
 			this.indexNum = e.target.dataset.num;
 		},
 		selectKind(e){
-			this.$store.state.list_kindNum = e.target.dataset.num;
 			this.show = false;
 			this.downCallback();
 			$('#minirefresh').scrollTop(0)
 		},
 		selectColor(e){
-			this.$store.state.list_colorNum = e.target.dataset.num;
 			this.show = false;
 			this.downCallback();
 			$('#minirefresh').scrollTop(0)
 		},
 		selectCountry(e){
-			this.$store.state.list_countryNum = e.target.dataset.num;
 			this.show = false;
 			this.downCallback();
 			$('#minirefresh').scrollTop(0)
@@ -296,16 +220,7 @@ export default {
 		}
 	},  
 	computed:{
-		...mapGetters([
-			'name',
-			"textShow",
-			"home",
-			"listTop",
-			'list_kindNum',
-			'list_colorNum',
-			'list_countryNum',
-			'list_keyword'
-			])
+
 	},
 	directives:{//局部自定义指令
 		viewred:function(el){

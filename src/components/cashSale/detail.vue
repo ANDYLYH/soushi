@@ -7,7 +7,7 @@
 		<div class="swiper-container swiper-container_1">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide" v-for="item in detailImgs">
-					<img :src="item.imageUrl" class="swiper-img">
+					<img src="../../img/bitmap.png" :data-src="item.imageUrl" class="swiper-img swiper-lazy">
 				</div>
 			</div>
 			<div class="swiper-pagination"></div>
@@ -37,6 +37,7 @@
 			<span class="details_navSpan">供应商</span>
 		</div>
 		<div class="split_line"></div>
+		
 		<div class="footer">
 			<div class="detail-list" id="JDetailList">
 				<div class="detail-item contact-detail">
@@ -63,7 +64,9 @@
 </template>
 <script type="text/javascript">
 import {mapGetters,mapMutations} from 'vuex'
-import API from "./../../api"
+// import API from "./../../api"
+import config from "./../../api/api"
+import getDataFn from "./../../api/utilAjax"
 export default {
 	data(){
 		return {
@@ -87,21 +90,30 @@ export default {
 		},
 		getData(){
 			const $self = this;
-			API.onsale.detail({
-					"blockId": $self.$route.params.id
-				}).then((res) => {
-			        $self.detailImgs = res.data.data.detail.imageInfoList;
-					$self.title = res.data.data.detail.variety;
-					$self.detailsObj = res.data.data.detail;
-					document.title = res.data.data.detail.variety
-	        });
+			// API.onsale.detail({
+			// 		"blockId": $self.$route.params.id
+			// 	}).then((res) => {
+			//         $self.detailImgs = res.data.data.detail.imageInfoList;
+			// 		$self.title = res.data.data.detail.variety;
+			// 		$self.detailsObj = res.data.data.detail;
+			// 		document.title = res.data.data.detail.variety
+	  //       });
+			getDataFn(config.slabDetail,{"blockId": $self.$route.params.id},function(res){
+	            if(res.status.code == 0){
+	               	$self.detailImgs = res.data.detail.imageInfoList;
+					$self.title = res.data.detail.variety;
+					$self.detailsObj = res.data.detail;
+					document.title = res.data.detail.variety
+	            }
+	        })
 		},
 		_initSwiper() {
 			var mySwiper = new Swiper('.swiper-container', {
-				autoplay: 1000,//可选选项，自动滑动
+				autoplay: 3000,//可选选项，自动滑动
 				pagination : '.swiper-pagination',
 				observer:true, //修改swiper自己或子元素时，自动初始化swiper
     			observeParents:true,//修改swiper的父元素时，自动初始化swiper
+    			lazyLoading: true,
 			});
 		}
 	},
@@ -112,11 +124,7 @@ export default {
 		})
 	},
 	computed:{
-		...mapGetters([
-			'name',
-			"textShow",
-			"home"
-			])
+
 	}
 }
 </script>

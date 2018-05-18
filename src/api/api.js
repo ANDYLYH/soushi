@@ -5,6 +5,7 @@ var test = false;
 var dev = false;
 
 var config = {
+    queryWallPanel:"https://slab.backend.soushi88.com/onsale/queryWallPanel",//背景墙
     search: "https://lib.backend.soushi88.com/stoneLibWx/search",
     detail: "https://lib.backend.soushi88.com/stoneLibWx/detail",
 
