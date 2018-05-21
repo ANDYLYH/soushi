@@ -205,4 +205,8 @@ textarea::-webkit-input-placeholder{
   width: 10.0rem;
   width: 10.0rem;
 }
-
+.minirefresh-totop{
+    bottom: 114px;
+    width: 60px;
+    height: 60px;
+}

@@ -1,13 +1,13 @@
 <template>
 	<div class="saleDetails">
-		<div class="header-content">
+		<!-- <div class="header-content">
 			<span class="header-back" @click="back"></span>
-			<span class="header-text">{{title}}</span>
-		</div>
+			<span class="header-text">{{title}}</span>unescape()
+		</div> -->
 		<div class="swiper-container swiper-container_1">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide" v-for="item in detailImgs">
-					<img src="../../img/bitmap.png" :data-src="item.imageUrl" class="swiper-img swiper-lazy">
+				<div class="swiper-slide" v-for="item in detailImgs" >
+					<img src="../../img/bitmap.png" :data-src="item.imageUrl" class="swiper-img swiper-lazy" :data-imglist="escape(detailImgs)" @click="clickImg">
 				</div>
 			</div>
 			<div class="swiper-pagination"></div>
@@ -60,6 +60,7 @@
 				</div>
 			</div>
 		</div>
+		<big-img v-if="showImg" @clickit="viewImg" :imgSrc="imgSrc"></big-img>
 	</div>
 </template>
 <script type="text/javascript">
@@ -67,14 +68,20 @@ import {mapGetters,mapMutations} from 'vuex'
 // import API from "./../../api"
 import config from "./../../api/api"
 import getDataFn from "./../../api/utilAjax"
+import BigImg from '@/components/common/BigImg'
 export default {
 	data(){
 		return {
 			detailImgs:[],
 			title:'',
 			detailsObj:{},
+			showImg:false,
+			imgSrc:'',
 		}
 	},
+	components: {
+        'big-img':BigImg
+    },
 	beforeCreate(){
 		
 	},
@@ -115,7 +122,18 @@ export default {
     			observeParents:true,//修改swiper的父元素时，自动初始化swiper
     			lazyLoading: true,
 			});
-		}
+		},
+		clickImg(e) {
+            this.showImg = true;
+            // 获取当前图片地址
+            this.imgSrc = e.target.dataset.imglist;
+        },
+        viewImg(){
+            this.showImg = false;
+        },
+        escape(obj){
+        	return JSON.stringify(obj);
+        }
 	},
 	mounted(){
 		this._initSwiper();

@@ -8,22 +8,126 @@
 			</div>
 		</div>
 		<div class="ctrl-list" id="JCtrlList">
-            <div class="ctrl-item variety-ctrl bind-click" data-index="0">
-                <span class="text">品种</span>
+            <div  class="ctrl-item variety-ctrl bind-click" :class="indexNum == 0 && show == true ? 'active' : ''" data-index="0" >
+                <span class="text" @click="clickFn" data-index="0" v-if="kindName == '' ? true :false ">品种</span>
+                <span class="text" @click="clickFn" data-index="0" v-if="kindName == '' ? false : true">{{kindName}}</span>
                 <i class="icon icon-dowm"></i>
             </div>
-            <div class="ctrl-item price-ctrl bind-click" data-index="1">
-                <span class="text">价格</span>
-                <div class="icon-wrapper">
+            <div   class="ctrl-item price-ctrl bind-click" :class="priceFilerNum == 1  ? 'active-down' : priceFilerNum == 2 ?'active-up':''" data-index="1">
+                <span class="text" @click="clickFn" data-index="1">价格</span>
+                <div class="icon-wrapper" >
                     <i class="icon icon-price-up"></i>
                     <i class="icon icon-price-dowm"></i>
                 </div>
             </div>
-            <div class="ctrl-item format-ctrl bind-click" data-index="3">
-                <span class="text">筛选</span>
+            <div class="ctrl-item format-ctrl bind-click" :class="indexNum == 2 && show == true  ? 'active' : ''" data-index="2">
+                <span class="text" @click="clickFn" data-index="2">筛选</span>
                 <i class="icon icon-dowm"></i>
             </div>
         </div>
+        <ul class="panel-list" id="JPanelList" v-if="show">
+            <li class="variety-panel panel-item option-list" :class="indexNum == 0 ? 'active' : ''">
+                <span class="option-item delegate-click all" :class="kindName == '' ?'active' : ''" @click="selectKind" data-num="">全部</span>
+                <span class="option-item delegate-click" :class="kindName == '爵士白' ?'active' : ''" @click="selectKind" data-num="爵士白">爵士白</span>
+                <span class="option-item delegate-click" :class="kindName == '索菲特金' ?'active' : ''" @click="selectKind" data-num="索菲特金">索菲特金</span>
+                <span class="option-item delegate-click" :class="kindName == '白玉兰' ?'active' : ''" @click="selectKind" data-num="白玉兰">白玉兰</span>
+                <span class="option-item delegate-click" :class="kindName == '浅啡网' ?'active' : ''" @click="selectKind" data-num="浅啡网">浅啡网</span>
+                <span class="option-item delegate-click" :class="kindName == '银白龙' ?'active' : ''" @click="selectKind" data-num="银白龙">银白龙</span>
+                <span class="option-item delegate-click" :class="kindName == '黑白根' ?'active' : ''" @click="selectKind" data-num="黑白根">黑白根</span>
+                <span class="option-item delegate-click" :class="kindName == '银河灰' ?'active' : ''" @click="selectKind" data-num="银河灰">银河灰</span>
+                <span class="option-item delegate-click" :class="kindName == '古堡灰' ?'active' : ''" @click="selectKind" data-num="古堡灰">古堡灰</span>
+                <span class="option-item delegate-click" :class="kindName == '奥特曼' ?'active' : ''" @click="selectKind" data-num="奥特曼">奥特曼</span>
+                <span class="option-item delegate-click" :class="kindName == '芬兰金啡' ?'active' : ''" @click="selectKind" data-num="芬兰金啡">芬兰金啡</span>
+                <span class="option-item delegate-click" :class="kindName == '北极光' ?'active' : ''" @click="selectKind" data-num="北极光">北极光</span>
+                <span class="option-item delegate-click" :class="kindName == '世纪米黄' ?'active' : ''" @click="selectKind" data-num="世纪米黄">世纪米黄</span>
+                <span class="option-item delegate-click" :class="kindName == '雅柏灰' ?'active' : ''" @click="selectKind" data-num="雅柏灰">雅柏灰</span>
+                <span class="option-item delegate-click" :class="kindName == '红龙玉' ?'active' : ''" @click="selectKind" data-num="红龙玉">红龙玉</span>
+                <span class="option-item delegate-click" :class="kindName == '美尼斯金' ?'active' : ''" @click="selectKind" data-num="美尼斯金">美尼斯金</span>
+                <span class="option-item delegate-click" :class="kindName == '黑玫瑰' ?'active' : ''" @click="selectKind" data-num="黑玫瑰">黑玫瑰</span>
+                <span class="option-item delegate-click" :class="kindName == '雅典黑金花' ?'active' : ''" @click="selectKind" data-num="雅典黑金花">雅典黑金花</span>
+                <span class="option-item delegate-click":class="kindName == '古木纹' ?'active' : ''" @click="selectKind" data-num="古木纹">古木纹</span>
+                <span class="option-item delegate-click" :class="kindName == '西西里灰' ?'active' : ''" @click="selectKind" data-num="西西里灰">西西里灰</span>
+                <span class="option-item delegate-click" :class="kindName == '新莎安娜' ?'active' : ''" @click="selectKind" data-num="新莎安娜">新莎安娜</span>
+                <span class="option-item delegate-click" :class="kindName == '阿富汗黑金花' ?'active' : ''" @click="selectKind" data-num="阿富汗黑金花">阿富汗黑金花</span>
+                <span class="option-item delegate-click" :class="kindName == '欧亚木纹' ?'active' : ''" @click="selectKind" data-num="欧亚木纹">欧亚木纹</span>
+                <span class="option-item delegate-click" :class="kindName == '圣诞米黄' ?'active' : ''" @click="selectKind" data-num="圣诞米黄">圣诞米黄</span>
+            </li>
+            <li class="filter-panel panel-item" :class="indexNum == 2 ? ' active' : ''">
+                <div class="filter-list">
+                    <div class="filter-item price-filter">
+                        <div class="filter-title">
+                            <span class="text">价格区间</span>
+                            <span class="clear-button price-clear-button">
+                                清除
+                            </span>
+                        </div>
+                        <div class="filter-content">
+                            <input class="input input-min-price" type="text" placeholder="0">
+                            <div class="symbol">
+                                <span class="to"></span>
+                            </div>
+                            <input class="input input-max-price" type="text" placeholder="0">
+                            <span class="unit">元／m²</span>
+                        </div>
+                    </div>
+                    <div class="filter-item format-filter">
+                        <div class="filter-title">
+                            <span class="text">规格</span>
+                            <span class="clear-button format-clear-button">
+                                清除
+                            </span>
+                        </div>
+                        <div class="filter-content">
+                            <input class="input input-length" type="text" placeholder="长">
+                            <div class="symbol">
+                                <span class="multiple">×</span>
+                            </div>
+                            <input class="input input-width" type="text" placeholder="宽">
+                            <div class="symbol">
+                                <span class="multiple">×</span>
+                            </div>
+                            <input class="input input-thickness" type="text" placeholder="厚">
+                            <span class="unit">mm</span>
+                        </div>
+                    </div>
+                    <div class="filter-item grade-filter">
+                        <div class="filter-title">等级</div>
+                        <div class="filter-content option-list">
+                            <span class="option-item " @click="gradeFn" :class="gradeNum == '0' ? 'active' : ''" data-num="0">全部</span>
+                            <span class="option-item" @click="gradeFn" :class="gradeNum == '1' ? 'active' : ''" data-num="1">A级</span>
+                            <span class="option-item" @click="gradeFn" :class="gradeNum == '2' ? 'active' : ''" data-num="2">B级</span>
+                            <span class="option-item" @click="gradeFn" :class="gradeNum == '3' ? 'active' : ''" data-num="3">C级</span>
+                        <span class="option-item delegate-click empty">空</span><span class="option-item delegate-click empty">空</span></div>
+                    </div>
+                    <div class="filter-item sale-filter">
+                        <div class="filter-title">销售方式</div>
+                        <div class="filter-content option-list">
+                            <span class="option-item " @click="seleStyle" :class="saleMethod == '-1' ? 'active' : ''" data-num="-1">全部</span>
+                            <span class="option-item" @click="seleStyle" :class="saleMethod == '0' ? 'active' : ''" data-num="0">按颗</span>
+                            <span class="option-item" @click="seleStyle" :class="saleMethod == '1' ? 'active' : ''" data-num="1">按扎</span>
+                            <span class="option-item" @click="seleStyle" :class="saleMethod == '2' ? 'active' : ''" data-num="2">按件</span>
+                        <span class="option-item delegate-click empty">空</span><span class="option-item delegate-click empty">空</span></div>
+                    </div>
+                </div>
+                <div class="button-bar">
+                    <div class="button-list">
+                        <div class="button-item reset-button" @click="closeFn">
+                            <span class="text">取消</span>
+                        </div>
+                        <div class="button-item confirm-button">
+                            <span class="text">确定</span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <div class="panel-masker active"></div>
+        </ul>
+        <div class="result-masker no-data-result-masker active" v-if="emptyFlag">
+			<div class="pic">
+				<img src="../../img/no-data.png" alt="">
+			</div>
+			<span class="text">暂无数据</span>
+		</div>
 		<div id="minirefresh" class="minirefresh-wrap" @scroll="paperScroll()">
 			<div class="minirefresh-scroll">
 				<ul class="listContent_ul">
@@ -31,9 +135,12 @@
 						<router-link :to="{name:'SaleDetails',params:{id:item.idString}}">
 							<img :src="item.imageUrlList[0]"/>   
 						</router-link>
-						<p class="list-text list-chineseName">{{item.variety}}</p>
+						<p class="list-text list-chineseName">{{item.variety}} <span v-if="item.gradeName.length ? true : false">- {{item.gradeName}}</span></p>
 						<p class="list-text">规格：{{item.length}} * {{item.width}} * {{item.thickness}} mm</p>
-						<p class="list-text">{{item.saleMethodName}}：{{item.salePrice}} 元/m²</p>
+						<p class="list-text">{{item.saleMethodName}}：
+							<span style="color: rgb(226, 56, 59);font-weight: bold;font-size: 24px;" v-if="item.salePrice ? true : false">{{item.salePrice}}</span>
+							<span style="color: rgb(226, 56, 59);font-weight: bold;font-size: 24px;" v-if="item.salePrice ? false : true">面议</span> 元/m²
+						</p>
 					</li>
 				</ul>
 			</div>
@@ -56,6 +163,14 @@ export default {
 			pageTotal:0,
 			title:'精品现货',
 			minirefresh: null,
+			indexNum:null,
+			show:false,
+			priceFilerNum:0,
+			kindName:'',
+			orderBy:0,
+			saleMethod:'-1',
+			gradeNum:'0',
+			emptyFlag:false
 		}
 	},
 	components:{
@@ -108,8 +223,22 @@ export default {
 			getDataFn(config.slabQuery,{
 		        "pageCurrent": $self.pageCurrent,
 				"pageSize": 16,
-				"quality": 2
+				"quality": 2,
+				keyword:$self.kindName,
+				saleMethod:$self.saleMethod,
+				orderBy:$self.orderBy
 		      },function(res){
+		      	if(res.data.list.length == 0){
+					$self.emptyFlag = true;
+					$self.miniRefresh.refreshOptions($self.getOptionsByStatus('关闭'));
+				}else{
+					$self.emptyFlag = false;
+					$self.miniRefresh.refreshOptions($self.getOptionsByStatus('启动'));
+				}
+		      	if(res.data.list.length == 0){
+		      		$self.list = [];
+		      		return ;
+		      	}
 		        $self.pageTotal = res.page.totalPage;
 				$self.pageCurrent = res.page.pageCurrent;
 				$self.list = [];
@@ -146,7 +275,10 @@ export default {
 			getDataFn(config.slabQuery,{
 		        "pageCurrent": $self.pageCurrent,
 				"pageSize": 16,
-				"quality": 2
+				"quality": 2,
+				keyword:$self.kindName,
+				saleMethod:$self.saleMethod,
+				orderBy:$self.orderBy
 		    },function(res){
 		        $self.pageTotal = res.page.totalPage;
 				$self.pageCurrent = res.page.pageCurrent;
@@ -161,6 +293,50 @@ export default {
 		},
 		paperScroll(){
 			this.$store.state.cashTop = $('#minirefresh').scrollTop();
+		},
+		getOptionsByStatus(statusName){
+			return {
+				down : {
+					isLock : '关闭' == statusName
+				},
+				up:{
+					isLock : '关闭' == statusName
+				}
+			}
+		},
+		clickFn(e){
+			if(e.target.dataset.index == this.indexNum || this.indexNum == null){
+				this.show = !this.show;
+			}else{
+				this.show = true;
+			}
+
+			if(e.target.dataset.index == 1){
+				this.show = false;
+				this.priceFilerNum++;
+				if(this.priceFilerNum == 3){
+					this.priceFilerNum = 0;
+				}
+				this.orderBy = this.priceFilerNum;
+				this.downCallback();
+				$('#minirefresh').scrollTop(0);
+			}
+			this.indexNum =parseInt(e.target.dataset.index);
+		},
+		selectKind(e){
+			this.kindName = e.target.dataset.num;
+			this.show = false;
+			this.downCallback();
+			$('#minirefresh').scrollTop(0)
+		},
+		closeFn(){
+			this.show = false;
+		},
+		seleStyle(e){
+			this.saleMethod = e.target.dataset.num;
+		},
+		gradeFn(e){
+			this.gradeNum = e.target.dataset.num;
 		}
 	},  
 }

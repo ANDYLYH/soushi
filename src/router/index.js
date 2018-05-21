@@ -12,6 +12,8 @@ import shoppingCarts from '@/components/persional/shoppingCarts'
 import persionSettings from '@/components/persional/persionSettings'
 import search from '@/components/map/search'
 import wall from '@/components/wall/index'
+import sample from '@/components/sample/index'
+import sampleDetail  from '@/components/sample/detail'
 require("./../plugins/jquery")
 import MiniRefreshTools from 'minirefresh';
 import 'minirefresh/dist/debug/minirefresh.css'
@@ -85,6 +87,20 @@ var routes = [
 		title: '背景墙',
 		keepAlive: true
 	}
+},
+{
+	path: '/sample',
+	name: 'sample',
+	component: sample,
+	meta: {
+		title: '样板商城',
+		keepAlive: true
+	}
+},
+{
+	path: '/sampleDetail/:id',
+	name: 'sampleDetail',
+	component: sampleDetail,
 },
 {
 	path: '/SaleDetails/:id',

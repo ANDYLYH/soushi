@@ -1,35 +1,39 @@
 <template>
 	<div class="detilsContent">
-		<!-- 头部 -->
-		<div class="header-content">
-			<span class="header-back" @click="back"></span>
-			<span class="header-text">{{title}}</span>
-		</div>
 		<div class="swiper-container">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide" v-for="item in detailImgs"><img  src="../../img/bitmap.png" :data-src="item" class="swiper-img swiper-lazy"></div>
+				<div class="swiper-slide" v-for="item in detailImgs">
+					<img  src="../../img/bitmap.png" :data-src="item" class="swiper-img swiper-lazy" @click="clickImg">
+				</div>
 			</div>
 			<div class="swiper-pagination"></div>
 		</div>
+		<big-img v-if="showImg" @clickit="viewImg" :imgSrc="imgSrc"></big-img>
 	</div>
+	
 </template>
 <script>
 import {mapGetters,mapMutations} from 'vuex'
 // import API from "./../../api"
 import config from "./../../api/api"
 import getDataFn from "./../../api/utilAjax"
+import BigImg from '@/components/map/BigImg'
 export default {
 	data(){
 		return {
 			detailImgs:[],
-			title:'详情'
+			title:'详情',
+			showImg:false,
+			imgSrc:''
 		}
 	},
 	activated(){
 		console.log(1)
 	},
+	components: {
+        'big-img':BigImg
+    },
 	created(){	
-		document.title = "大板详情";
 		this.$store.state.home = false;
 		const $self = this;
 		// 图库详情 请求
@@ -52,8 +56,7 @@ export default {
 					$self.detailImgs.push(res.data.detail.assistantImageList[i].assistantImageList);
 				}
 			}
-			$self.title = res.data.detail.chineseName || '详情';
-			document.title = res.data.detail.chineseName || "详情";
+			document.title = res.data.detail.chineseName || "图库详情";
 		})	
 	},
 	methods:{
@@ -68,7 +71,16 @@ export default {
     			observeParents:true,//修改swiper的父元素时，自动初始化swiper
     			lazyLoading: true,
     		});
-		}
+		},
+		clickImg(e) {
+            this.showImg = true;
+            // 获取当前图片地址
+            this.imgSrc = e.currentTarget.src;
+            console.log(this.imgSrc)
+        },
+        viewImg(){
+            this.showImg = false;
+        },
 	},
 	mounted(){
 		this._initSwiper();
@@ -84,7 +96,7 @@ export default {
 }
 .detilsContent{
 	width: 100%;
-	padding-top: 80px;
+	/*padding-top: 80px;*/
 }
 .img{
 	width: 100%;

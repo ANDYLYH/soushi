@@ -62,7 +62,7 @@
            
             <div class="swiper-slide link-item ybsc-link">
                 <a href="javascript:void(0);">
-                  <router-link :to="{name: 'supplier'}">
+                  <router-link :to="{name: 'sample'}">
                     <i class="icon"></i>
                     <span class="text">样板商城</span>
                   </router-link>
@@ -78,7 +78,7 @@
         </div>
     </div>
 
-    <div id="minirefresh" class="minirefresh-wrap"  style="top: 688px;">
+    <div id="minirefresh1" class="minirefresh-wrap"  style="">
       <div class="minirefresh-scroll">
         <ul class="listContent_ul">
           <li v-for="item in list" class="list">
@@ -87,7 +87,7 @@
             </router-link>
             <p class="list-text list-chineseName">{{item.variety}}</p>
             <p class="list-text">规格：{{item.length}} * {{item.width}} * {{item.thickness}} mm</p>
-            <p class="list-text">{{item.saleMethodName}}：{{item.salePrice}} 元/m²</p>
+            <p class="list-text">{{item.saleMethodName}}：<span style="color: rgb(226, 56, 59);font-weight: bold;font-size: 24px;">{{item.salePrice}}</span> 元/m²</p>
           </li>
         </ul>
       </div>
@@ -173,7 +173,6 @@ export default {
       })
     },
     upCallback(){
-      console.log(1)
       const $self = this;
       console.log($self.pageTotal,$self.pageCurrent)
       if($self.pageTotal == $self.pageCurrent){
@@ -218,7 +217,7 @@ export default {
     var self = this;
     
     self.miniRefresh = new MiniRefresh({
-      container: '#minirefresh',
+      container: '#minirefresh1',
       down: {
         isLock: false,//默认false，不禁止下拉
         callback: self.downCallback
@@ -238,4 +237,11 @@ export default {
 <style scoped>
   @import '../../css/index.css';
   @import '../../css/cashSale.css';
+  .minirefresh-wrap{
+    position: relative;
+  }
+  
+  #minirefresh1 .upwrap-tips,#minirefresh .minirefresh-downwrap .downwrap-content .downwrap-tips{
+    font-size: 20px!important;
+  }
 </style>

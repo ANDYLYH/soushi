@@ -91,7 +91,7 @@ html.over-flow-hidden .wraper{
 
 /* panel-list start */
 .panel-list{
-    display: none;
+    /*display: none;*/
     position: fixed;
     z-index: 100;
     top: 164px;

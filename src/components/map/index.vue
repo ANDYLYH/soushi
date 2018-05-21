@@ -60,7 +60,7 @@
 							<img :src="item.standardImage">
 						</div>
 						<p class="list-text list-chineseName">{{item.chineseName}}</p>
-						<p class="list-text" v-viewred>编号：{{item.stoneNo | capitalize}}</p>
+						<p class="list-text" >编号：{{item.stoneNo | capitalize}}</p>
 					</li>
 				</ul>
 			</div>

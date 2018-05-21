@@ -1,5 +1,5 @@
 #minirefresh{
-	top: 165px;
+	top: 166px;
 	bottom: 96px;
 }
 .list-content{
@@ -70,7 +70,7 @@
   width: 95%;
   margin: 0 auto;
   border-radius: 60px;
-  border:1px solid #e1e1e1;
+  border:1px solid #999;
   margin-top: 10px;
   
 }
@@ -88,10 +88,15 @@
   font-size: 24px;
   color: #666;
   width: 85%;
-  height: 58px;
+  height: 56px;
   border:0;
   outline: none;
+  position: relative;
+  top: 1px;
 }
+.listSearchInputText::-webkit-input-placeholder{
+	    		color: #666;
+	    	}
 .clearSearch{
   position: absolute;
   height: 30px;
@@ -100,8 +105,41 @@
   text-align: center;
   line-height: 30px;
   left: 85%;
-  border:1px solid #e1e1e1;
+  border:1px solid #999;
   border-radius: 50%;
   top: 26px;
 }
 /*common head end*/
+/* result-masker start */
+.result-masker{
+    display: none;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    top: 60px;
+    padding-top: 50px;
+    z-index: 10;
+}
+
+.result-masker.active{
+    display: block;
+}
+
+.result-masker .pic{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.result-masker .pic img{
+    width: 220px;
+    height: 220px;
+}
+
+.result-masker .text{
+    display: block;
+    font-size: 22px;
+    text-align: center;
+    color:rgb(125, 125, 125);
+}
+
+/* result-masker end */
