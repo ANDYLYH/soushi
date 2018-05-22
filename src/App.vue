@@ -3,30 +3,31 @@
     <keep-alive>
         <router-view v-if="$route.meta.keepAlive"></router-view>
     </keep-alive>
-    <router-view v-if="!$route.meta.keepAlive"></router-view>
+    <router-view v-if="!$route.meta.keepAlive && isRouterAlive"></router-view>
   </div>
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
 import foot from '@/components/common/footer.vue'
 export default {
   name: 'app',
-  data(){
+  provide(){
     return {
-      activeName: 'first',
-      name:this._name
+      reload:this.reload
     }
   },
-  computed:{
-    ...mapGetters([
-      "home"
-    ])
+  data(){
+    return {
+      isRouterAlive:true
+    }
   },
   methods:{
-    handleClick(tab, event) {
-        
-      }
+    reload(){
+      this.isRouterAlive = false;
+      this.$nextTick(function(){
+        this.isRouterAlive = true;
+      })
+    }
   },
 }
 </script>

@@ -44,9 +44,7 @@ a {
 a:hover {
     text-decoration: none
 }　
-img{
-  display: block;
-}
+
 input[type=number]::-webkit-input-placeholder { 
       color: #DDDDDD; 
       -webkit-transition: color.5s; 

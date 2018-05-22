@@ -83,8 +83,8 @@
     <div class="footer">
         <div class="buttons-wrapper fixed button-list" id="JButtonList" style="position: fixed">
             <div class="guider-button button-item bind-click" ><i class="icon"></i><span class="text" @click="call">客服</span></div>
-            <div class="send-button check-login button-item bind-click">样板定制</div>
-            <div class="buy-button check-login button-item bind-click">购物车  (0)</div>
+            <div class="send-button check-login button-item bind-click" @click="SampleOrderFlag=true">样板定制</div>
+            <div class="buy-button check-login button-item bind-click"  @click="goShoppingCart">购物车  (0)</div>
         </div>
     </div>
 
@@ -97,32 +97,18 @@
             </div>
         </div>
     </div>
-
-    <div class="guider-masker" id="JGuiderMasker" v-show="callMsgShow">
-        <div class="show-masker bind-click"></div>
-        <div class="guider-container">
-            <div class="m-box">
-                <div class="box-wrapper">
-                    <div class="title">专业导购员一对一服务</div>
-                    <div class="text add-wx">添加导购员微信：soushi88</div>
-                    <img src="../../img/sample/ewm.png" alt="" >
-                    <p class="phone-wrapper">
-                        <span class="text">人工导购热线：0766-8520999</span>
-                        <a class="phone" href="tel:0766-8520999">
-                            <i class="icon"></i>
-                        </a>
-                    </p>
-                </div>
-                <div class="close bind-click" @click="callMsgShow =false"></div>
-            </div>
-        </div>
-    </div>
-
+    <!-- 样板定制 -->
+    <sampleorder v-if="SampleOrderFlag" @clickcel="SampleOrderFlag = false" :name="title"></sampleorder>
+    <!-- 客服信息  -->
+    <guider v-if="guiderFlag" @clickclose="closeView"></guider>
+    
 </div>
 </template>
 <script>
 import config from "./../../api/api"
 import getDataFn from "./../../api/utilAjax"
+import GuiDer from '@/components/common/guider'
+import SampleOrder from '@/components/map/sampleOrder'
 	export default {
 		data(){
 			return {
@@ -130,9 +116,14 @@ import getDataFn from "./../../api/utilAjax"
 				detailList:[],
 				indexNum:null,
 				show:false,
-				callMsgShow:false
+                guiderFlag:false,
+                SampleOrderFlag:false
 			}
 		},
+        components: {
+            'guider':GuiDer,
+            'sampleorder':SampleOrder
+        },
 		created(){	
 			document.title = "样板详情";
 			this.$store.state.home = false;
@@ -160,8 +151,14 @@ import getDataFn from "./../../api/utilAjax"
 				this.indexNum = parseInt(e.target.dataset.index);	
 			},
 			call(){
-				this.callMsgShow = true;
-			}
+				this.guiderFlag = true;
+			},
+            closeView(){
+                this.guiderFlag = false;
+            },
+            goShoppingCart(){
+                this.$router.push({path:'/shoppingCart'});
+            }
 		},
 		mounted(){
 		},

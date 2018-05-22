@@ -14,7 +14,9 @@ import search from '@/components/map/search'
 import wall from '@/components/wall/index'
 import sample from '@/components/sample/index'
 import sampleDetail  from '@/components/sample/detail'
-require("./../plugins/jquery")
+import shoppingCart  from '@/components/common/shoppingCart'
+require("../plugins/jquery")
+require("../plugins/lazyLoad")
 import MiniRefreshTools from 'minirefresh';
 import 'minirefresh/dist/debug/minirefresh.css'
 // import elementUi from 'element-ui'
@@ -50,6 +52,11 @@ var routes = [
     //     next({ name: 'HelloWorld' })
     //     next()
     //   }
+},
+{
+	path: '/shoppingCart',
+	name: 'shoppingCart',
+	component: shoppingCart
 },
 {
 	path: '/details/:id',
@@ -111,11 +118,6 @@ var routes = [
 	path: '/persion',
 	name: 'persion',
 	component: persion
-},
-{
-	path: '/shoppingCarts',
-	name: 'shoppingCarts',
-	component: shoppingCarts
 },
 {
 	path: '/persionSettings',

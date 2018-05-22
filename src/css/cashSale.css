@@ -18,7 +18,7 @@
 	box-sizing: border-box;
 	/*height: 248px;*/
 	overflow: hidden;
-	padding: 20px 20px 20px 20px;
+	padding: 20px 20px 20px 17px;
 	border-right: 1px solid rgb(225, 225, 225);
 	border-bottom: 1px solid rgb(225, 225, 225);
 }
@@ -36,7 +36,8 @@
 .list img{
 	display: block;
 	height: auto;
-	width: 100%;
+	/*width: 100%;*/
+  width: 338px;
 	height: 250px;
 }
 .no-more{

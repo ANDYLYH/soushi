@@ -63,7 +63,7 @@
 				<ul class="listContent_ul">
 					<li v-for="item in list" class="list">
 						<router-link :to="{name:'sampleDetail',params:{id:item.stoneLibId}}">
-							<img :src="item.templateImage"/>   
+							<img :src="item.templateImage" height="562" width="750" />   
 						</router-link>
 						<p class="list-text list-chineseName">{{item.stoneName}}</p>
 						<p class="list-text">编号：{{item.stoneNo | capitalize}}</p>
@@ -114,7 +114,6 @@ export default {
 	created(){
 	},
 	mounted () {
-	
 		var self = this;
 		self.miniRefresh = new MiniRefresh({
 			container: '#minirefresh',
@@ -190,7 +189,6 @@ export default {
 					$self.emptyFlag = true;
 					$self.miniRefresh.refreshOptions($self.getOptionsByStatus('关闭'));
 				}
-				
 			})	
 		},
 		upCallback(){
@@ -327,4 +325,7 @@ export default {
 <style scoped>
 @import '../../css/list.css';
 @import '../../css/sample.css';
+.list img{
+	height: 334px;
+}
 </style>

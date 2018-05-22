@@ -10,7 +10,7 @@
                 </div>
                 <div class="personal-list" id="JPersonalList">
                     <div class="personal-item cerification-personal">
-                        <a href="javascript:void(0)" class="link">
+                        <a href="javascript:void(0)" class="link"  @click="dialog = true">
                             <span class="label">企业认证</span>
                             <span class="text"></span>
                             <i class="button authorized-button">已认证</i>
@@ -20,35 +20,35 @@
                     <div class="personal-item order-personal" id="JOrderPersonal">
                         <div class="title">
                             <span class="label">我的订单</span>
-                            <span class="check-all">查看所有订单</span>
+                            <span class="check-all"  @click="dialog = true">查看所有订单</span>
                             <i class="icon nextpage-icon"></i>
                         </div>
                         <div class="content order-list">
-                            <div class="order-item obligation-order" data-status="1">
+                            <div class="order-item obligation-order" data-status="1"  @click="dialog = true">
                                 <i class="icon obligation-icon">
                                     <i class="number" v-show="payedOrderNum == 0 ? false:true">{{payedOrderNum}}</i>
                                 </i>
                                 <span class="text">待付款</span>
                             </div>
-                            <div class="order-item delivered-order" data-status="2">
+                            <div class="order-item delivered-order" data-status="2"  @click="dialog = true">
                                 <i class="icon delivered-icon">
                                     <i class="number active" v-show="sendindOrderNum == 0 ? false:true">{{sendindOrderNum}}</i>
                                 </i>
                                 <span class="text">待发货</span>
                             </div>
-                            <div class="order-item received-order" data-status="3">
+                            <div class="order-item received-order" data-status="3"  @click="dialog = true">
                                 <i class="icon received-icon">
                                     <i class="number active" v-show="sendindOrderNum == 0 ? false:true">{{sendindOrderNum}}</i>
                                 </i>
                                 <span class="text">待收货</span>
                             </div>
-                            <div class="order-item success-order" data-status="4">
+                            <div class="order-item success-order" data-status="4"  @click="dialog = true">
                                 <i class="icon success-icon" >
                                     <i class="number active" v-show="finishedOrderNum == 0 ? false:true">{{finishedOrderNum}}</i>
                                 </i>
                                 <span class="text">交易成功</span>
                             </div>
-                            <div class="order-item cancel-order" data-status="-1">
+                            <div class="order-item cancel-order" data-status="-1"  @click="dialog = true">
                                 <i class="icon cancel-icon">
                                     <i class="number" v-show="invalidOrderNum == 0 ? false:true">{{invalidOrderNum}}</i>
                                 </i>
@@ -57,34 +57,34 @@
                         </div>
                     </div>
                     <div class="personal-item collection-personal" id="JCollectionPersonal">
-                        <div class="title">
+                        <div class="title"  @click="dialog = true">
                             <span class="label">我的收藏</span>
                         </div>
                         <div class="content collection-list" id="JCollectionList">
-                            <div class="collection-item obligation-collection" data-status="1">
+                            <div class="collection-item obligation-collection" data-status="1" @click="dialog = true">
                                 <i class="number">{{slabCollectNum}}</i>
                                 <span class="text">商品收藏</span>
                             </div>
-                            <div class="collection-item delivered-collection" data-status="2">
+                            <div class="collection-item delivered-collection" data-status="2" @click="dialog = true">
                                 <i class="number">{{companyCollectNum}}</i>
                                 <span class="text">商家收藏</span>
                             </div>
-                            <div class="collection-item empty-collection" data-status="0">
+                            <div class="collection-item empty-collection" data-status="0" @click="dialog = true">
                                 <i class="number"></i>
                                 <span class="text">待发货</span>
                             </div>
-                            <div class="collection-item empty-collection" data-status="0">
+                            <div class="collection-item empty-collection" data-status="0" @click="dialog = true">
                                 <i class="number"></i>
                                 <span class="text">待发货</span>
                             </div>
-                            <div class="collection-item empty-collection" data-status="0">
+                            <div class="collection-item empty-collection" data-status="0" @click="dialog = true">
                                 <i class="number"></i>
                                 <span class="text">待发货</span>
                             </div>
                         </div>
                     </div>
                     <div class="personal-item cart-personal" id="JCartPersonal">
-                        <router-link to="/shoppingCarts"  class="link">
+                        <router-link to="/shoppingCart"  class="link">
                             <span class="label">我的购物车</span>
                             <i class="icon nextpage-icon" ></i>
                             <span class="number" style="display: inline;" v-show="cartGoodsNum == 0 ? false:true">{{cartGoodsNum}}</span>
@@ -92,10 +92,10 @@
                     </div>
                     <div class="personal-item price-personal" id="JPricePersonal">
                         <div class="hide-price bind-click">
-                            <span class="label">隐藏产品价格</span>
-                            <label class="toggle toggle-balanced">
+                            <span class="label" v-html="selectFlag ? '显示产品价格' : '隐藏产品价格'"></span>
+                            <label class="toggle toggle-balanced " :class="selectFlag ? 'active' : ''">
                                 <div class="track">
-                                    <div class="handle"></div>
+                                    <div class="handle" @click="selectFlag = !selectFlag"></div>
                                 </div>
                             </label>
                         </div>
@@ -109,6 +109,10 @@
                 </div>
             </div>
         </div>
+         <mu-dialog :open="dialog" title="信息提示">
+          火速开发中，敬请期待！
+          <mu-flat-button label="确定" slot="actions" primary @click="dialog = false"/>
+        </mu-dialog>
         <!-- 底部 -->
         <ft :name="$router.currentRoute.name"></ft>
     </div>
@@ -136,6 +140,7 @@ export default {
       companyCollectNum:0,
       cartGoodsNum:0,
       userName:'点击登录',
+      selectFlag:false,
     }
   },
   components:{
@@ -192,4 +197,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
     @import '../../css/persion.css';
+    .mu-flat-button-label,.mu-dialog-title+.mu-dialog-body{
+      font-size: 20px;
+    }
+    .test{
+      font-size: 30px;
+    }
 </style>

@@ -3,23 +3,31 @@
     <div class="swiper-container swiper-container1" id="jd_swiper">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
-                <a href="../jpsc/jpsc.html">
+                <a href="javascript:void(0);">
+                  <router-link :to="{name: 'boutique'}">
                     <img src="../../img/index/banner1.png" class="swiper-lazy" >
+                  </router-link>
                 </a>
             </div>
             <div class="swiper-slide">
-                <a href="../sxh/sxh.html">
-                    <img src="../../img/index/banner4.png" class="swiper-lazy">
+                <a href="javascript:void(0);">
+                  <router-link :to="{name: 'cashSale'}">
+                    <img src="../../img/index/banner4.png" class="swiper-lazy" >
+                  </router-link>
                 </a>
             </div>
              <div class="swiper-slide">
-                <a href="../ybsc/ybsc.html">
-                    <img src="../../img/index/banner2.png" class="swiper-lazy">
+                <a href="javascript:void(0);">
+                  <router-link :to="{name: 'sample'}">
+                    <img src="../../img/index/banner2.png" class="swiper-lazy" >
+                  </router-link>
                 </a>
             </div>
             <div class="swiper-slide">
-                <a href="../pzzs/pzzs.html">
-                    <img src="../../img/index/banner3.png" class="swiper-lazy">
+                <a href="javascript:void(0);">
+                  <router-link :to="{name: 'photo'}">
+                    <img src="../../img/index/banner3.png" class="swiper-lazy" >
+                  </router-link>
                 </a>
             </div>
         </div>
@@ -138,7 +146,6 @@ export default {
       })
     },
     downCallback(){
-      console.log(2)
       const $self = this;
       this.pageCurrent = 1;
       // API.onsale.search({
@@ -158,7 +165,7 @@ export default {
       //     });
       getDataFn(config.slabQuery,{
           "pageCurrent": $self.pageCurrent,
-          "pageSize": 8
+          "pageSize": 16,
       },function(res){
           $self.pageTotal = res.page.totalPage;
           $self.pageCurrent = res.page.pageCurrent;
@@ -174,7 +181,6 @@ export default {
     },
     upCallback(){
       const $self = this;
-      console.log($self.pageTotal,$self.pageCurrent)
       if($self.pageTotal == $self.pageCurrent){
         $self.miniRefresh.endUpLoading(true);
         return false;
@@ -215,18 +221,19 @@ export default {
   mounted () {
     this._initSwiper();
     var self = this;
-    
-    self.miniRefresh = new MiniRefresh({
-      container: '#minirefresh1',
-      down: {
-        isLock: false,//默认false，不禁止下拉
-        callback: self.downCallback
-      },
-      up: { 
-        isAuto: true,
-        callback: self.upCallback
-      }
-    });
+    this.downCallback();
+    // self.miniRefresh = new MiniRefresh({
+    //   container: '#minirefresh1',
+    //   down: {
+    //     isLock: true,//默认false，不禁止下拉
+    //     callback: self.downCallback
+    //   },
+    //   up: { 
+    //     isAuto: true,
+    //      isLock: true,
+    //     callback: self.upCallback
+    //   }
+    // });
   },
   computed:{
   }
@@ -235,6 +242,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  @import '../../css/reset.css';
   @import '../../css/index.css';
   @import '../../css/cashSale.css';
   .minirefresh-wrap{
