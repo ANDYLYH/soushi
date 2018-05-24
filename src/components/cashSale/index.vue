@@ -138,8 +138,8 @@
 						<p class="list-text list-chineseName">{{item.variety}}</p>
 						<p class="list-text">规格：{{item.length}} * {{item.width}} * {{item.thickness}} mm</p>
 						<p class="list-text">{{item.saleMethodName}}：
-							<span style="color: rgb(226, 56, 59);font-weight: bold;font-size: 24px;" v-if="item.salePrice ? true : false">{{item.salePrice}}</span>
-							<span style="color: rgb(226, 56, 59);font-weight: bold;font-size: 24px;" v-if="item.salePrice ? false : true">面议</span> 元/m²
+							<span style="color: rgb(226, 56, 59);font-weight: bold;font-size: 24px;" v-html="item.salePrice ? item.salePrice : '面议'"></span>
+							 元/m² 
 						</p>
 					</li>
 				</ul>

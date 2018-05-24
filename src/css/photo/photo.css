@@ -1,5 +1,5 @@
 .photoContent{
-	margin: 0;padding: 0;width: 100vw;height: 100vh;background: url(../img/bg.png) no-repeat center center;background-size: 100%;padding-bottom: 96px;
+	margin: 0;padding: 0;width: 100vw;height: 100vh;background: url(../../img/bg.png) no-repeat center center;background-size: 100%;padding-bottom: 96px;
 }
 .wraper, .container, .m-bg {
     height: 100%;

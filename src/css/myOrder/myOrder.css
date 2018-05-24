@@ -1,0 +1,289 @@
+	.check-list{
+    display: -webkit-flex;
+    display: flex;
+    position: fixed;
+    width: 100%;
+    z-index:10;
+    background: #fff;
+}
+
+.check-list .check-item {
+    -webkit-flex: 1;
+    flex: 1;
+    font-size: 28px;
+    line-height: 28px;
+    text-align: center;
+    color: #000;
+}
+
+.check-list .check-item span {
+    padding: 31px 0;
+    display: inline-block;
+}
+
+.check-list .check-item.active{
+    color: #03A3E7;
+}
+
+.check-list .check-item.active span {
+    border-bottom: 2px solid #03A3E7;
+    box-sizing: border-box;
+}
+
+.content {
+    position: absolute;
+    top: 90px;
+    width: 100%;
+}
+
+.item-divider{
+    background: #f9f9f9;
+    height: 20px;
+}
+
+.order-list .order-title{
+    background: #fff;
+    padding: 25px 24px;
+    font-size: 30px;
+    line-height: 30px;
+}
+
+.order-list .order-title .status{
+    float: right;
+    color: #03A3E7;
+}
+
+.order-list .order-content {
+    padding: 0 24px;
+    background: #f9f9f9;
+}
+
+.pic-text{
+    padding: 24px 0;
+    display: -webkit-flex;
+    display: flex;
+    position: relative;
+}
+
+.pic-text .pic-list {
+    width: 182px;
+    height: 182px;
+    overflow: hidden;
+    background: #fff;
+    margin-right: -1px;
+    margin-bottom: -1px;
+}
+
+.pic-text .pic-list .pic-item{
+    background: rgb(232, 232, 232);
+    box-sizing: border-box;
+    margin-right: 1px;
+    margin-bottom: 1px;
+}
+
+.pic-text .pic-list .pic-item.pic1{
+    width: 100%;
+    height: 100%;
+}
+
+ .pic-text .pic-list .pic-item.pic2{
+    width: 100%;
+    height: 50%;
+}
+
+.pic-text .pic-list .pic-item.pic3,
+.pic-text .pic-list .pic-item.pic4{
+    float: left;
+    width: 90px;
+    height: 50%;
+    box-sizing: border-box;
+}
+
+.pic-text .pic-list .pic-item img{
+    width: 100%;
+    height: 100%;
+}
+
+.pic-text .txt-wrapper{
+    margin-left: 30px;
+    -webkit-flex: 1;
+    flex: 1;
+    width: 491px;
+}
+
+.pic-text span{
+    display: block;
+    font-size: 24px;
+    line-height: 24px;
+    margin-bottom: 24px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space:nowrap;
+}
+
+.pic-text .name{
+    font-size: 30px;
+    line-height: 30px;
+    color: #000;
+}
+
+.pic-text .format,
+.pic-text .surface{
+    color: rgb(102, 102, 102);
+}
+
+.pic-text .delivery-type .text{
+    font-size: 26px;
+    color: #fff;
+    background-image: -webkit-linear-gradient(to right, rgb(78, 147, 255) 0%, rgb(84, 192, 250) 100%);
+    background-image: linear-gradient(to right, rgb(78, 147, 255) 0%, rgb(84, 192, 250) 100%);
+    height: 36px;
+    width: 132px;
+    display: inline-block;
+    text-align: center;
+    line-height: 36px;
+    border-radius: 18px;
+    margin-bottom: 0;
+    margin-top: -3px;
+}
+
+.commodity {
+    font-size: 36px;
+    line-height: 36px;
+    padding: 22px 0;
+    margin: 0 24px;
+    position: relative;
+    color: #000;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(225, 225, 225);
+}
+
+.commodity .order-time{
+    font-size: 28px;
+    color: rgb(102, 102, 102);
+}
+
+.commodity .text-wrapper .text{
+    font-size: 30px;
+}
+
+.commodity .text-wrapper .amount{
+    color: rgb(226, 56, 59);
+    position: relative;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.order-account {
+    display: -webkit-flex;
+    display: flex;
+    margin:0 24px;
+    padding: 10px 0;
+    justify-content: space-between;
+}
+
+.order-account .reason{
+    font-size: 28px;
+    color: rgb(102, 102, 102);
+    padding: 16px 0;
+}
+
+.order-account .button-wrapper{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.order-account .cancel-button,
+.order-account .pay-button,
+.order-account .logistics-button,
+.order-account .confirm-button{
+    font-size: 28px;
+    width: 180px;
+    height: 60px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 58px;
+    margin-left: 40px;
+}
+
+.order-account .pay-button {
+    background: rgb(43, 226, 199);
+    color: #fff;
+}
+
+.order-account .cancel-button,
+.order-account .logistics-button{
+    border: 1px solid rgb(153, 153, 153);
+}
+
+.order-account .confirm-button{
+    background: rgb(20, 160, 230);
+    color: #fff;
+}
+
+.dropload-down{
+    height: 80px;
+    color: #666;
+    margin-bottom: 0;
+}
+
+.dropload-refresh, .dropload-update, .dropload-load, .dropload-noData {
+    height: 80px;
+    line-height: 80px;
+}
+
+/*masker-error*/
+.masker-error {
+    z-index:9;
+}
+
+.masker-error i{
+    display: inline-block;
+    width: 650px;
+    height: 588px;
+    margin-bottom: 35px;
+}
+
+.masker-error .item-hide{
+    text-align: center;
+}
+
+.masker-error span{
+    display: block;
+    padding: 15px 0;
+    font-size: 30px;
+    text-align: center;
+    color: #666;
+    margin-bottom: 35px;
+}
+
+.masker-error .button {
+    padding: 20px 90px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #f8f8f8;
+    font-size: 26px;
+    color: #000;
+}
+
+.masker-error .fail i {
+    /*background: url("../../images/sctk/fail.png") no-repeat;*/
+}
+
+.masker-error .no-result i {
+    /*background: url("../../images/sctk/no-result.png") no-repeat;*/
+}
+
+.masker-error .no-data i {
+    background: url("../../img/no-data.png") no-repeat;
+}
+
+.masker-tips-small {
+    z-index: 20;
+}
+
+.masker-error .item-hide{
+    text-align: center;
+}

@@ -141,6 +141,7 @@ export default {
         autoplay: 3000,
         speed: 1000,
         paginationClickable: true,
+        lazyLoadingInPrevNext: true,
         observer:true, //修改swiper自己或子元素时，自动初始化swiper
         observeParents:true,//修改swiper的父元素时，自动初始化swiper
       })
@@ -173,7 +174,7 @@ export default {
           for(let i = 0; i < res.data.list.length ;i++ ){
             $self.list.push(res.data.list[i]);
           }
-          $self.miniRefresh.endDownLoading(true);
+          // $self.miniRefresh.endDownLoading(true);
           if($self.pageTotal != $self.pageCurrent){
             $self.pageCurrent += 1;
           } 
@@ -251,5 +252,12 @@ export default {
   
   #minirefresh1 .upwrap-tips,#minirefresh .minirefresh-downwrap .downwrap-content .downwrap-tips{
     font-size: 20px!important;
+  }
+  .swiper-pagination-bullet{
+      width: 37px;
+      height: 4px;
+      background: rgb(216, 216, 216);
+      opacity: 1;
+      border-radius: 0;
   }
 </style>

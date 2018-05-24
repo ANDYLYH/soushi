@@ -18,20 +18,27 @@
 <script>
 export default {
     props: [
-     'imgSrc'
+     'imgSrc',"index"
     ],
+    data(){
+        return {
+            _Swiper:null,
+            idx:this.index
+        }
+    },
     methods: {
         bigImg() {
             // 发送事件
-            this.$emit('clickit')
+            this.$emit('clickit','hi')
         },
         _initSwiper() {
-            var mySwiper = new Swiper('.swiper-container', {
+            this._Swiper = new Swiper('.swiper-container', {
                 autoplay: 3000,//可选选项，自动滑动
                 pagination : '.swiper-pagination',
                 observer:true, //修改swiper自己或子元素时，自动初始化swiper
                 observeParents:true,//修改swiper的父元素时，自动初始化swiper
                 lazyLoading: true,
+                loop:true
             });
         },
         unescape(obj){
@@ -41,6 +48,12 @@ export default {
     mounted(){
         this._initSwiper();
     },
+    computed:{
+        indx:function(){
+            this._Swiper.slideTo(idx, 1000, false);
+            return idx;
+        }
+    }
 }
 </script>
 <style scoped>

@@ -1,0 +1,146 @@
+	.g-doc{
+    height: 100vh;
+}
+
+.g-doc{
+    background: url("../../img/login/bg.png") no-repeat;
+    background-size: cover;
+}
+
+.logo{
+    padding-top: 70px;
+    margin-bottom: 310px;
+}
+
+.logo .pic {
+    width: 170px;
+    height: 170px;
+    margin: 0 auto 25px;
+}
+
+.logo .pic img{
+    border-radius: 20px;
+}
+
+.logo .text {
+    text-align: center;
+    color: rgb(25, 25, 25);
+    font-size: 24px;
+    line-height: 24px;
+}
+
+.panel-box{
+    padding:0 75px;
+}
+
+.panel-box .input-list{
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    background: rgba(25, 25, 25, 0.79);
+}
+
+.panel-box .input-list .input-item{
+    padding: 26px 0px;
+    font-size: 28px;
+    line-height: 28px;
+    margin-left: 20px;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    color: #fff;
+}
+
+.panel-box .input-list .phone-input{
+    border-bottom: 1px solid #ddd;
+}
+
+.panel-box .input-list .input-item .label{
+    display: inline-block;
+    width: 110px;
+    font-size: 28px;
+    line-height: 28px;
+}
+
+.panel-box .input-list .input-item input{
+    border: 0;
+    background: transparent;
+    font-size: 28px;
+    color: #fff;
+    outline: none;
+}
+
+.panel-box .submit-button{
+    margin-bottom: 30px;
+    background-image: linear-gradient(to right, rgb(86, 119, 248), rgb(63, 168, 255));
+    text-align: center;
+    line-height: 30px;
+    padding: 25px 0;
+    font-size: 30px;
+    border-radius: 4px;
+    color: #fff;
+}
+
+.panel-box .forget-password{
+    font-size: 30px;
+    line-height: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+}
+
+.panel-box .forget-password .link{
+    color: rgb(87, 119, 249);
+}
+
+.register-bar{
+    position: fixed;
+    height: 120px;
+    padding: 20px 40px;
+    box-sizing: border-box;
+    display: flex;
+    display: -webkit-flex;
+    bottom: 0;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+}
+
+.register-bar .text{
+    font-size: 28px;
+    line-height: 28px;
+    color: rgb(139, 139, 139);
+}
+
+.register-bar .register-button{
+    border: 1px solid rgb(87, 119, 249);
+    border-radius: 4px;
+    width: 200px;
+    height: 80px;
+    font-size: 30px;
+    line-height: 80px;
+    text-align: center;
+}
+
+.register-bar .register-button .link{
+    color: rgb(87, 119, 249);
+}
+
+.panel-box .register {
+    background: rgb(254, 207, 128);
+    color: #fff;
+    font-size: 30px;
+    border-radius: 10px;
+    display: block;
+    position: relative;
+    vertical-align: top;
+    text-align: center;
+    height: 90px;
+    line-height: 90px;
+}
+
+.panel-box .register .link{
+    color: #fff;
+    display: block;
+}

@@ -72,7 +72,7 @@
 					</div>
 
 				</div>
-				<div class="submit fixed" id="JSubmit">
+				<div class="_submit " id="JSubmit">
 					<div class="button" style="background-color：#fff;color:#444;" @click="cancel">取消</div>
 					<div class="button">提交</div>
 				</div>
@@ -106,7 +106,7 @@
 		}
 	}
 </script>
-<style scope>
+<style scoped>
 .fade-enter-active,
 .fade-leave-active {
     transition: all .5s linear;
@@ -369,13 +369,13 @@ textarea {
 }
 
 /*submit start*/
-.submit{
+._submit{
 	position: fixed;
     bottom: 0;
     width: 100%;
 }
 
-.submit .button{
+._submit .button{
 	float: left;
     background: #03A3E7;
     color: #fff;
@@ -391,7 +391,7 @@ textarea {
     border-top: 1px solid #e1e1e1;
     cursor: pointer;
 }
-.submit .button:nth-child(1){
+._submit .button:nth-child(1){
 	background-color: #fff;
 }
 /*submit end*/

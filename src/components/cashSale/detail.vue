@@ -69,7 +69,7 @@
 									<span class="slice-length-data data-item">{{data.sliceLength}}</span>
 									<span class="slice-width-data data-item">{{data.sliceWidth}}</span>
 									<span class="slice-thickness-data data-item">{{data.sliceThickness}}</span>
-									<span class="slice-lost-data data-item">{{data.totalLostAngleArea}}</span>
+									<span class="slice-lost-data data-item" v-html="data.totalLostAngleArea == 0 ? '--' : data.totalLostAngleArea"></span>
 									<span class="slice-area-data data-item">{{data.sliceArea}}</span>
 								</div>
 							</div>
@@ -135,21 +135,20 @@
 				<div class="detail-item collection-detail bind-click">    
 					<div class="collection-button bind-click " :class="collectionFlag ? 'active' : ''" @click="collectionFlag = !collectionFlag" id="JCollectionButton">
 						<i class="icon icon-collection"></i>
-						<span class="text" v-if="!collectionFlag">收藏</span>
-						<span class="text" v-if="collectionFlag">已收藏</span>
+						<span class="text" v-html="collectionFlag ? '已收藏' : '收藏'"></span>
 					</div>
 				</div>
 			</div>
 		</div>
 		
 		<!-- 预览大图 -->
-		<big-img v-if="showImg" @clickit="viewImg" :imgSrc="imgSrc"></big-img>
+		<big-img v-if="showImg" @clickit="viewImg" :imgSrc="imgSrc" :index="activeIndex"></big-img>
 		<!-- 客服信息 -->
 		<guider v-if="guiderFlag" @clickclose="closeView"></guider>
 	</div>
 </template>
 <script type="text/javascript">
-import {mapGetters,mapMutations} from 'vuex'
+// import {mapGetters,mapMutations} from 'vuex'
 // import API from "./../../api"
 import config from "./../../api/api"
 import getDataFn from "./../../api/utilAjax"
@@ -171,7 +170,9 @@ export default {
 			idxNum:0,
 			guiderFlag:false,
 			collectionFlag:false,
-			SampleOrderFlag:false
+			SampleOrderFlag:false,
+			mySwiper:null,
+			activeIndex:null,
 		}
 	},
 	inject:['reload'],
@@ -219,12 +220,18 @@ export default {
 	        })
 		},
 		_initSwiper() {
-			var mySwiper = new Swiper('.swiper-container', {
+			var self = this;
+			this.mySwiper = new Swiper('.swiper-container', {
 				autoplay: 3000,//可选选项，自动滑动
 				pagination : '.swiper-pagination',
 				observer:true, //修改swiper自己或子元素时，自动初始化swiper
     			observeParents:true,//修改swiper的父元素时，自动初始化swiper
     			lazyLoading: true,
+    			loop:true,
+    			onSlideChangeEnd: function (swiper){
+    				// console.log(swiper.activeIndex);
+    				self.activeIndex = swiper.activeIndex;
+    			}
 			});
 		},
 		clickImg(e) {

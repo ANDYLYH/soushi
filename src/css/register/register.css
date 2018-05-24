@@ -1,0 +1,159 @@
+input {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    outline: none;
+}
+	html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body{
+    background: #f8f8f8;
+}
+/* panel-sh start */
+.panel-sh{
+    padding-top: 108px;
+}
+
+.panel .pic {
+    width: 170px;
+    height: 170px;
+    margin: 0 auto;
+}
+
+.panel-sh .pic img{
+    border-radius: 20px;
+}
+
+.panel-sh p {
+    text-align: center;
+    color: #666;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-size: 22px;
+    line-height: 22px;
+}
+/* panel-sh end */
+
+/* panel-box start */
+.panel-box{
+    padding-top: 24px;
+    padding-left: 75px;
+    padding-right: 75px;
+}
+
+.panel-box .time{
+    text-align: right;
+    font-size: 24px;
+    color: #666;
+    line-height:24px;
+    margin-bottom: 26px;
+}
+/* panel-box end */
+
+/* input-list start */
+.input-list{
+    margin-bottom: 55px;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.input-list .input-item{
+    padding: 26px 0px;
+    font-size: 28px;
+    line-height: 28px;
+    margin-left:20px;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+} 
+
+.input-list .input-item .label{
+    display: inline-block;
+    width: 130px;
+    font-size: 28px;
+    line-height: 28px;
+}
+
+.input-list .input-item .label .icon{
+    color: red;
+}
+
+.input-list .input-item input{
+    border: 0;
+    background: transparent;
+    font-size: 28px;
+}
+
+.input-list .check-input .check-numer{
+    width: 250px;
+}
+
+.input-list .check-input .check-number-button{
+    color: #03A3E7;
+    position: absolute;
+    right: 20px;
+
+}
+/* input-list end */
+
+/* read start */
+.read {
+    padding-top: 30px;
+    text-align: center;
+}
+
+.read .icon-read:before {
+    content: '';
+    background: url("../../img/icon_default.png") no-repeat;
+    background-size: 100% 100%;
+    display:inline-block;
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+
+.read.active .icon-read:before {
+    content: '';
+    background: url("../../img/icon_selected.png") no-repeat;
+    background-size: 100% 100%;
+}
+
+.read span {
+    font-size: 28px;
+    line-height: 28px;
+}
+.read a{
+    color: #03A3E7;
+}
+/* read end */
+
+input[type="button"] {
+    background: none;
+}
+
+input[type="button"][disabled] {
+    color: #666;
+}
+
+/*submit start*/
+._submit{
+    bottom: 0;
+    width: 100%;
+}
+
+._submit .button{
+    background: #03A3E7;
+    color: #fff;
+    font-size: 30px;
+    line-height: 30px;
+    padding: 26px 0;
+    display: block;
+    background-image: -webkit-linear-gradient(to right, rgb(86, 119, 248), rgb(63, 168, 255));
+    background-image: linear-gradient(to right, rgb(86, 119, 248), rgb(63, 168, 255));
+    text-align: center;
+}
+/*submit end*/

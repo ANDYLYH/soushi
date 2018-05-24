@@ -36,5 +36,5 @@
 	}
 </script>
 <style scoped>
-	@import '../../css/photo.css'
+	@import '../../css/photo/photo.css';
 </style>

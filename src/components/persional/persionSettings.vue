@@ -1,30 +1,49 @@
 <template>
 	<div class="wraper">
-        <div class="container">
+        <div class="container" style="background-color:#f9f9f9">
             <div class="personal-list" id="JPersonalList">
                 <div class="personal-item info-personal">
-                    <a href="javascript:void(0)" class="link">
-                        <span class="label">个人信息</span>
-                        <i class="icon nextpage-icon"></i>
-                    </a>
+                    <router-link :to="{name:'personalMsg'}">
+                        <a href="javascript:void(0)" class="link">
+                            <span class="label">个人信息</span>
+                            <i class="icon nextpage-icon"></i>
+                        </a>
+                    </router-link>
                 </div>
                 <div class="personal-item adderss-personal">
-                    <a href="javascript:void(0)" class="link">
-                        <span class="label">收货地址</span>
-                        <i class="icon nextpage-icon"></i>
-                    </a>
+                    <router-link :to="{name:'myDeliveryAddress'}">
+                        <a href="javascript:void(0)" class="link">
+                            <span class="label">收货地址</span>
+                            <i class="icon nextpage-icon"></i>
+                        </a>
+                    </router-link>
                 </div>
                 <div class="personal-item adderss-personal">
-                    <a href="javascript:void(0)" class="link">
-                        <span class="label">修改密码</span>
-                        <i class="icon nextpage-icon"></i>
-                    </a>
+                    <router-link :to="{name:'changePassword'}">
+                        <a href="javascript:void(0)" class="link">
+                            <span class="label">修改密码</span>
+                            <i class="icon nextpage-icon"></i>
+                        </a>
+                    </router-link>
                 </div>
             </div>
 
-            <div class="submit" id="JSubmit">
-                <div class="button bind-click">
+            <div class="_submit" id="JSubmit">
+                <div class="button bind-click" @click="maskerFlag = true">
                     退出登录
+                </div>
+            </div>
+        </div>
+
+         <div class="confirm-masker" :class="maskerFlag ? 'active' : ''" id="JConfirmMasker">
+            <div class="show-masker bind-click"></div>
+            <div class="masker-container">
+                <div class="masker-box">
+                    <div class="title">是否退出登录?</div>
+                    <div class="button-list">
+                        <div class="button-item cancel-button bind-click" @click="maskerFlag = false">取消</div>
+                        <div class="button-item confirm-button bind-click" @click="maskerFlag = false">确认</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -34,7 +53,7 @@
 	export default {
 		data(){
 			return {
-
+                maskerFlag:false,
 			}
 		},
 		activated(){
@@ -42,7 +61,8 @@
 		  },
 	}
 </script>
-<style>
+<style scoped>
+@import '../../css/common.css';
     body {
     background: #f8f8f8;
 }
@@ -80,18 +100,20 @@
     display: block;
     width: 14px;
     height: 27px;
-    /*background: url(./icon/personal/icon-nextpage.png) no-repeat;*/
+    background: url(../../img/icon-nextpage.png) no-repeat;
     background-size: 100% 100%;
     position: absolute;
     right: 24px;
 }
 /* personal-list end */
 /* 退出 start */
-.submit {
+._submit {
+    bottom: 0;
+    width: 100%;
     padding-bottom: 40px;
 }
 
-.submit .button {
+._submit .button {
     color: #333;
     font-size: 28px;
     line-height: 28px;

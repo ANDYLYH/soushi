@@ -6,7 +6,8 @@
                     <div class="pic bind-click">
                         <img src="../../img/persion/head.png" alt="">
                     </div>
-                    <p class="name">{{userName}}</p>
+                    <p class="name" v-if="userName == '请先登录' ? false : true">{{userName}}</p>
+                    <router-link :to="{name:'login'}"><p class="name" v-if="userName == '请先登录' ? true : false">请先登录</p></router-link>
                 </div>
                 <div class="personal-list" id="JPersonalList">
                     <div class="personal-item cerification-personal">
@@ -18,41 +19,55 @@
                         </a>
                     </div>
                     <div class="personal-item order-personal" id="JOrderPersonal">
-                        <div class="title">
-                            <span class="label">我的订单</span>
-                            <span class="check-all"  @click="dialog = true">查看所有订单</span>
-                            <i class="icon nextpage-icon"></i>
-                        </div>
+                        <router-link :to="{name:'myOrder',params:{id:0}}">
+                          <div class="title">
+                            
+                              <span class="label">我的订单</span>
+                              <span class="check-all"  @click="dialog = true">查看所有订单</span>
+                              <i class="icon nextpage-icon"></i>
+                            
+                          </div>
+                        </router-link>
                         <div class="content order-list">
-                            <div class="order-item obligation-order" data-status="1"  @click="dialog = true">
-                                <i class="icon obligation-icon">
-                                    <i class="number" v-show="payedOrderNum == 0 ? false:true">{{payedOrderNum}}</i>
-                                </i>
-                                <span class="text">待付款</span>
+                            <div class="order-item obligation-order" data-status="1">
+                              <router-link :to="{name:'myOrder',params:{id:1}}">
+                                  <i class="icon obligation-icon">
+                                      <i class="number" v-show="payedOrderNum == 0 ? false:true">{{payedOrderNum}}</i>
+                                  </i>
+                                  <span class="text">待付款</span>
+                              </router-link>
                             </div>
-                            <div class="order-item delivered-order" data-status="2"  @click="dialog = true">
-                                <i class="icon delivered-icon">
-                                    <i class="number active" v-show="sendindOrderNum == 0 ? false:true">{{sendindOrderNum}}</i>
-                                </i>
-                                <span class="text">待发货</span>
+                            <div class="order-item delivered-order" data-status="2">
+                              <router-link :to="{name:'myOrder',params:{id:2}}">
+                                  <i class="icon delivered-icon">
+                                      <i class="number active" v-show="sendindOrderNum == 0 ? false:true">{{sendindOrderNum}}</i>
+                                  </i>
+                                  <span class="text">待发货</span>
+                              </router-link> 
                             </div>
-                            <div class="order-item received-order" data-status="3"  @click="dialog = true">
-                                <i class="icon received-icon">
-                                    <i class="number active" v-show="sendindOrderNum == 0 ? false:true">{{sendindOrderNum}}</i>
-                                </i>
-                                <span class="text">待收货</span>
+                            <div class="order-item received-order" data-status="3">
+                              <router-link :to="{name:'myOrder',params:{id:3}}">
+                                  <i class="icon received-icon">
+                                      <i class="number active" v-show="sendindOrderNum == 0 ? false:true">{{sendindOrderNum}}</i>
+                                  </i>
+                                  <span class="text">待收货</span>
+                              </router-link>
                             </div>
-                            <div class="order-item success-order" data-status="4"  @click="dialog = true">
-                                <i class="icon success-icon" >
-                                    <i class="number active" v-show="finishedOrderNum == 0 ? false:true">{{finishedOrderNum}}</i>
-                                </i>
-                                <span class="text">交易成功</span>
+                            <div class="order-item success-order" data-status="4">
+                               <router-link :to="{name:'myOrder',params:{id:4}}">
+                                  <i class="icon success-icon" >
+                                      <i class="number active" v-show="finishedOrderNum == 0 ? false:true">{{finishedOrderNum}}</i>
+                                  </i>
+                                  <span class="text">交易成功</span>
+                              </router-link> 
                             </div>
-                            <div class="order-item cancel-order" data-status="-1"  @click="dialog = true">
-                                <i class="icon cancel-icon">
-                                    <i class="number" v-show="invalidOrderNum == 0 ? false:true">{{invalidOrderNum}}</i>
-                                </i>
-                                <span class="text">失效</span>
+                            <div class="order-item cancel-order" data-status="-1" >
+                              <router-link :to="{name:'myOrder',params:{id:-1}}">
+                                  <i class="icon cancel-icon">
+                                      <i class="number" v-show="invalidOrderNum == 0 ? false:true">{{invalidOrderNum}}</i>
+                                  </i>
+                                  <span class="text">失效</span>
+                              </router-link>                                
                             </div>
                         </div>
                     </div>
@@ -150,9 +165,7 @@ export default {
     document.title = "个人中心";
   },
   created(){
-    this.$store.state.home = true;
-    // console.log(api.searchTemplateCountList);
-     
+    // console.log(api.searchTemplateCountList) 
   },
   methods:{
     ...mapMutations([
@@ -176,7 +189,7 @@ export default {
             if(res.status.code == 0){
                 self.userName = res.data.name;
             }else {
-
+                 self.userName = "请先登录";
             }
          })
     }
@@ -195,7 +208,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
     @import '../../css/persion.css';
     .mu-flat-button-label,.mu-dialog-title+.mu-dialog-body{
       font-size: 20px;

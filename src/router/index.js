@@ -1,20 +1,28 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import index from '@/components/home/index'
-import map from '@/components/map/index'
-import details from '@/components/map/detail'
-import photo from '@/components/photo/index'
-import cashSale from '@/components/cashSale/index'
-import boutique from '@/components/boutique/index'
-import SaleDetails from '@/components/cashSale/detail'
-import persion from '@/components/persional/index'
-import shoppingCarts from '@/components/persional/shoppingCarts'
-import persionSettings from '@/components/persional/persionSettings'
-import search from '@/components/map/search'
-import wall from '@/components/wall/index'
-import sample from '@/components/sample/index'
-import sampleDetail  from '@/components/sample/detail'
-import shoppingCart  from '@/components/common/shoppingCart'
+import index from '@/components/home/index'//首页
+import map from '@/components/map/index'//图库列表
+import details from '@/components/map/detail'//图库详情
+import photo from '@/components/photo/index'//拍照找石
+import cashSale from '@/components/cashSale/index'//大板列表
+import boutique from '@/components/boutique/index'//精品现货
+import SaleDetails from '@/components/cashSale/detail'//大板，精品。背景墙详情
+import persion from '@/components/persional/index'//个人中心
+import persionSettings from '@/components/persional/persionSettings'//个人设置
+import search from '@/components/map/search'//图库搜索
+import wall from '@/components/wall/index'//背景墙列表
+import sample from '@/components/sample/index'//样板商城列表
+import sampleDetail  from '@/components/sample/detail'//样板详情
+import shoppingCart  from '@/components/common/shoppingCart'//购物车
+import login  from '@/components/login/index'//登录页
+import register  from '@/components/register/index'//注册页
+import protocal  from '@/components/register/protocal'//注册协议
+import myOrder  from '@/components/myOrder/index'//我的订单列表
+import orderDetails from '@/components/myOrder/orderDetails'//订单详情
+import changePassword from '@/components/persional/changePassword'//修改密码
+import personalMsg from '@/components/persional/personalMsg'//个人信息
+import myDeliveryAddress from '@/components/persional/myDeliveryAddress'//收货地址
+
 require("../plugins/jquery")
 require("../plugins/lazyLoad")
 import MiniRefreshTools from 'minirefresh';
@@ -128,6 +136,46 @@ var routes = [
 	path: '/search',
 	name: 'search',
 	component: search
+},
+{
+	path: '/login',
+	name: 'login',
+	component: login
+},
+{
+	path: '/register',
+	name: 'register',
+	component: register
+},
+{
+	path: '/protocal',
+	name: 'protocal',
+	component: protocal
+},
+{
+	path: '/myOrder/:id',
+	name: 'myOrder',
+	component: myOrder
+},
+{
+	path: '/orderDetails',
+	name: 'orderDetails',
+	component: orderDetails
+},
+{
+	path: '/changePassword',
+	name: 'changePassword',
+	component: changePassword
+},
+{
+	path: '/personalMsg',
+	name: 'personalMsg',
+	component: personalMsg
+},
+{
+	path: '/myDeliveryAddress',
+	name: 'myDeliveryAddress',
+	component: myDeliveryAddress
 }
 ]
 export default new Router({
