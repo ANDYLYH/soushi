@@ -10,6 +10,10 @@ import store from './store'
 import $ from 'jquery'
 import Swiper from 'swiper'
 
+// 原型链  可以将封装好的方法挂载在vue上
+//Vue.prototype.method_name = function(argument){
+	// body... 
+// };
 Vue.config.productionTip = false;
 
 // 公共js

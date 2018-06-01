@@ -68,7 +68,7 @@
 						</div>
 			        </div>
 		    	</div>
-	            <div class="result-masker no-data-result-masker" :class="noData ? 'active' : ''" id="JNoDataResultMasker">
+	            <div class="result-masker no-data-result-masker" v-ref:msg="hollo" :class="noData ? 'active' : ''" id="JNoDataResultMasker">
 	                <div class="pic">
 	                    <img src="../../img/no-data.png" alt="">
 	                </div>
@@ -231,6 +231,7 @@ import getDataFn from "./../../api/utilAjax"
 			},
 		},
 		mounted(){
+			
 			// this.getOrderMsg();
 			var self = this;
 			self.miniRefresh = new MiniRefresh({

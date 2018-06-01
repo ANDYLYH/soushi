@@ -79,19 +79,19 @@
         </div>
     </div>
     <div class="split_line"></div>
-    <div class="clearfix m-tit">
-        <span>精品推荐</span>
+    <div class="clearfix m-tit" >
+        <span >精品推荐</span>
         <div class="fr right">|
             <a href="javascript:void(0)"><router-link :to="{name: 'cashSale'}">更多</router-link></a>
         </div>
     </div>
 
-    <div id="minirefresh1" class="minirefresh-wrap"  style="">
+    <div id="minirefresh1" class="minirefresh-wrap"  style="" >
       <div class="minirefresh-scroll">
         <ul class="listContent_ul">
-          <li v-for="item in list" class="list">
+          <li v-for="item in list" class="list" data-num="1" :data-msg="changeMsg(item)">
             <router-link :to="{name:'SaleDetails',params:{id:item.idString}}">
-              <img :src="item.imageUrlList[0]"/>   
+              <img :src="item.imageUrlList[0]" />   
             </router-link>
             <p class="list-text list-chineseName">{{item.variety}}</p>
             <p class="list-text">规格：{{item.length}} * {{item.width}} * {{item.thickness}} mm</p>
@@ -100,7 +100,6 @@
         </ul>
       </div>
     </div>
-   
      <!-- 底部导航 -->
      <ft :name="$router.currentRoute.name"></ft>
   </div>
@@ -109,10 +108,8 @@
 <script>
 import {mapGetters,mapMutations} from 'vuex'
 import foot from '@/components/common/footer'
-// import API from "./../../api"
 import config from "./../../api/api"
 import getDataFn from "./../../api/utilAjax"
-// import "../reset.css!css-loader"
 export default {
   data () {
     return {
@@ -121,6 +118,8 @@ export default {
       pageCurrent:1,
       pageTotal:0,
       minirefresh: null,
+      elements:{},
+      open:false
     }
   },
   components:{
@@ -134,12 +133,24 @@ export default {
      
   },
   methods:{
+    changeMsg(item){
+       return JSON.stringify(item)
+    },
+    getMsg(e){
+        console.log(e.path);
+
+        // for (var i = 0; i < e.path.length; i++) {
+        //     if(e.path[i].nodeName == 'LI'){
+        //        console.log(e.path[i].dataset.msg) 
+        //     }
+        // }
+        console.log($(this).data('msg'))
+    },
     _initSwiper() {
       var mySwiper = new Swiper('.swiper-container1', {
         pagination: ".swiper-pagination",
         loop: true,
         autoplay: 3000,
-        speed: 1000,
         paginationClickable: true,
         lazyLoadingInPrevNext: true,
         observer:true, //修改swiper自己或子元素时，自动初始化swiper
@@ -220,6 +231,7 @@ export default {
     }
   },
   mounted () {
+
     this._initSwiper();
     var self = this;
     this.downCallback();
@@ -235,6 +247,9 @@ export default {
     //     callback: self.upCallback
     //   }
     // });
+    // $('body').on('click','.list',function(){
+    //   console.log($(this).data('msg'))
+    // })
   },
   computed:{
   }
@@ -249,7 +264,7 @@ export default {
   .minirefresh-wrap{
     position: relative;
   }
-  
+ 
   #minirefresh1 .upwrap-tips,#minirefresh .minirefresh-downwrap .downwrap-content .downwrap-tips{
     font-size: 20px!important;
   }

@@ -920,7 +920,10 @@
 }
 /*msg*/
 .DetailsMsg{
-	width: 750px;overflow: hidden;padding: 12px 24px;
+	width: 750px;
+    overflow: hidden;
+    padding: 12px 24px;
+    box-sizing: border-box;
 }
 .text_name{
 	width: 100%;overflow: hidden;padding: 15px 0;

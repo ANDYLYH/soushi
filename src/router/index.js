@@ -29,10 +29,12 @@ import MiniRefreshTools from 'minirefresh';
 import 'minirefresh/dist/debug/minirefresh.css'
 // import elementUi from 'element-ui'
 // import 'element-ui/lib/theme-chalk/index.css';
-// Vue.use(elementUi)
-import MuseUI from 'muse-ui'
-import 'muse-ui/dist/muse-ui.css'
-Vue.use(MuseUI)
+// import ElementUI from 'element-ui'
+// import 'element-ui/lib/theme-default/index.css'
+// Vue.use(ElementUI)
+// import MuseUI from 'muse-ui'
+// import 'muse-ui/dist/muse-ui.css'
+// Vue.use(MuseUI)
 import vueResource from 'vue-resource'
 Vue.use(vueResource)
 
